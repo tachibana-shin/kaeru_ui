@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tachibana-shin/kaeru_ui)
+
 # Kaeru UI Extension Library
 
 Kaeru UI is a Flutter extension library that provides chainable, declarative syntax for building UI more concisely and expressively. It extends core Dart and Flutter types with additional utilities, and introduces **Virtual Widgets** for fluent UI composition.
