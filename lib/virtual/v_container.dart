@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/generic/num.dart';
+import 'package:kaeru_ui/kaeru_ui.dart';
 
 class VContainer {
   final Widget? child;
@@ -138,7 +139,9 @@ class VContainer {
   VContainer get alignBottomRight => align(Alignment.bottomRight);
 
   // ===== Margin & Padding =====
-  VContainer m(double v) => _copyWithMargin(v.p);
+  VContainer mar(EdgeInsetsGeometry p) => _copyWithMargin(p);
+  VContainer m(double v, [double? y]) =>
+      _copyWithMargin(y == null ? v.p : v.px.merge(y.py));
   VContainer mx(double v) => _copyWithMargin(v.px);
   VContainer my(double v) => _copyWithMargin(v.py);
   VContainer mt(double v) => _copyWithMargin(v.pt);
@@ -146,7 +149,9 @@ class VContainer {
   VContainer ml(double v) => _copyWithMargin(v.pl);
   VContainer mr(double v) => _copyWithMargin(v.pr);
 
-  VContainer p(double v) => _copyWithPadding(v.p);
+  VContainer pad(EdgeInsetsGeometry p) => _copyWithPadding(p);
+  VContainer p(double v, [double? y]) =>
+      _copyWithPadding(y == null ? v.p : v.px.merge(y.py));
   VContainer px(double v) => _copyWithPadding(v.px);
   VContainer py(double v) => _copyWithPadding(v.py);
   VContainer pt(double v) => _copyWithPadding(v.pt);

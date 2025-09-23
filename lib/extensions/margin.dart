@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/box.dart';
 
 extension KaeruMarginExtension on Widget {
+  Widget mar(EdgeInsetsGeometry p) => box.mar(p).make();
   Widget m(double v, [double? y]) =>
       y == null ? box.m(v).make() : box.mx(v).my(y).make();
   Widget mx(double v) => box.mx(v).make();
