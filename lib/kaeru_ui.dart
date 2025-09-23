@@ -3,6 +3,7 @@ export 'extensions/generic/list/flex.dart';
 export 'extensions/generic/list/wrap.dart';
 
 export 'extensions/generic/color.dart';
+export 'extensions/generic/edge_insets.dart';
 export 'extensions/generic/future.dart';
 export 'extensions/generic/int.dart';
 export 'extensions/generic/num.dart';

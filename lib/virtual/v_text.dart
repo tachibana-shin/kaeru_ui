@@ -75,7 +75,7 @@ class VText {
       shadows: [Shadow(color: color, blurRadius: blur, offset: offset)],
     ),
   );
-  VText backgroundColor(Color c) =>
+  VText bg(Color c) =>
       copyWithStyle(TextStyle(backgroundColor: c));
 
   // Font weight shortcuts

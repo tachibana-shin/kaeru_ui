@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/generic/num.dart';
 
 extension KaeruPaddingExtension on Widget {
+  Widget pad(EdgeInsets insets) => Padding(padding: insets, child: this);
   Widget p(double v) => Padding(padding: v.p, child: this);
   Widget px(double v) => Padding(padding: v.px, child: this);
   Widget py(double v) => Padding(padding: v.py, child: this);

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 extension KaeruColorOpacity on Color {
   /// Chainable opacity
-  Color r(int v) => withRed(v);
-  Color g(int v) => withGreen(v);
-  Color b(int v) => withBlue(v);
-  Color a(int opacity) => withAlpha(opacity);
+  Color sr(int v) => withRed(v);
+  Color sg(int v) => withGreen(v);
+  Color sb(int v) => withBlue(v);
+  Color sa(int opacity) => withAlpha(opacity);
 
   Color o(double opacity) => withValues(alpha: opacity);
 }
