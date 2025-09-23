@@ -1,3 +1,6 @@
+## 0.0.6
+* add `card` extension
+
 ## 0.0.5
 * Update spacing.dart
 
