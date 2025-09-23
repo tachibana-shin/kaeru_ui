@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 extension KaeruInkWellExtension on Widget {
-  Widget inkWell({
-    GestureTapCallback? onTap,
+  Widget inkWell(
+    GestureTapCallback? onTap, {
     GestureTapCallback? onDoubleTap,
     GestureLongPressCallback? onLongPress,
     ValueChanged<bool>? onHighlightChanged,
