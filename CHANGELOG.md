@@ -1,3 +1,6 @@
+## 0.0.4
+* Add additional parameters to KaeruInkWellExtension
+
 ## 0.0.3
 * add `.aspectRatio`
 * Update inkWell extension to improve parameter order
