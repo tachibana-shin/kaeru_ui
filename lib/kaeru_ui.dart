@@ -12,6 +12,7 @@ export 'extensions/generic/string_avatar.dart';
 export 'extensions/generic/string.dart';
 
 export 'extensions/animate.dart';
+export 'extensions/aspect_ratio.dart';
 export 'extensions/badge.dart';
 export 'extensions/box.dart';
 export 'extensions/clip.dart';
