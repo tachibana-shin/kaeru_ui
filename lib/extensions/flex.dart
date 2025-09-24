@@ -16,6 +16,18 @@ extension KaeruFlexWidgetExtension on Widget {
   Widget get bottomLeft => Align(alignment: Alignment.bottomLeft, child: this);
   Widget get bottomRight =>
       Align(alignment: Alignment.bottomRight, child: this);
+  Align align(
+    Alignment alignment, {
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
+  }) => Align(
+    key: key,
+    alignment: alignment,
+    heightFactor: heightFactor,
+    widthFactor: widthFactor,
+    child: this,
+  );
 
   // ===== Scrollable =====
   Widget scrollable({
