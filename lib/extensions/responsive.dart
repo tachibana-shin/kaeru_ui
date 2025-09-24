@@ -31,6 +31,15 @@ extension KaeruResponsiveHelpers on BuildContext {
   bool get smUp => isSm || isMd || isLg || isXl;
   bool get mdUp => isMd || isLg || isXl;
   bool get lgUp => isLg || isXl;
+
+  T responsiveValue<T>({required T xs, T? sm, T? md, T? lg, T? xl}) {
+    if (isXs) return xs;
+    if (isSm) return sm ?? xs;
+    if (isMd) return md ?? sm ?? xs;
+    if (isLg) return lg ?? md ?? sm ?? xs;
+    if (isXl) return xl ?? lg ?? md ?? sm ?? xs;
+    return xs; // fallback
+  }
 }
 
 extension KaeruResponsiveWidget on Widget {
@@ -68,4 +77,57 @@ extension KaeruResponsiveWidget on Widget {
 
   Widget lgUp(BuildContext context) =>
       context.lgUp ? this : const SizedBox.shrink();
+}
+
+class GridRow extends StatelessWidget {
+  final int xs;
+  final int? sm;
+  final int? md;
+  final int? lg;
+  final int? xl;
+  final List<Widget> children;
+  final double spacing;
+  final double runSpacing;
+
+  const GridRow({
+    super.key,
+    this.xs = 1,
+    this.sm,
+    this.md,
+    this.lg,
+    this.xl,
+    required this.children,
+    this.spacing = 8,
+    this.runSpacing = 8,
+  });
+
+  int _getColumnCount(BuildContext context) {
+    final width = context.width;
+    if (width < Breakpoints.xs) return xs;
+    if (width < Breakpoints.sm) return sm ?? xs;
+    if (width < Breakpoints.md) return md ?? sm ?? xs;
+    if (width < Breakpoints.lg) return lg ?? md ?? sm ?? xs;
+    return xl ?? lg ?? md ?? sm ?? xs;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colCount = _getColumnCount(context);
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: children.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: colCount,
+            crossAxisSpacing: spacing,
+            mainAxisSpacing: runSpacing,
+          ),
+          itemBuilder: (context, index) => children[index],
+        );
+      },
+    );
+  }
 }
