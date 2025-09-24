@@ -1,3 +1,6 @@
+## 0.0.11
+* fix export `card` extension
+
 ## 0.0.10
 * Improve FutureBuilder and StreamBuilder extensions with noData state handling
 
