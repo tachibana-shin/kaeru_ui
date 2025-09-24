@@ -22,4 +22,9 @@ extension KaeruWidgetClipExtension on Widget {
   Widget height(double height) => SizedBox(height: height, child: this);
   Widget size(double width, double height) =>
       SizedBox(width: width, height: height, child: this);
+
+  Widget clip({
+    CustomClipper<Rect>? clipper,
+    Clip clipBehavior = Clip.hardEdge,
+  }) => ClipRect(clipper: clipper, clipBehavior: clipBehavior, child: this);
 }

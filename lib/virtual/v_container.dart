@@ -246,8 +246,11 @@ class VContainer {
   /// Sets a linear gradient background.
   VContainer linearGradientBg({
     required List<Color> colors,
-    AlignmentGeometry begin = Alignment.topLeft,
-    AlignmentGeometry end = Alignment.bottomRight,
+    AlignmentGeometry begin = Alignment.centerLeft,
+    AlignmentGeometry end = Alignment.centerRight,
+    List<double>? stops,
+    TileMode tileMode = TileMode.clamp,
+    GradientTransform? transform,
   }) => VContainer(
     child: child,
     alignment: alignment,
@@ -257,10 +260,24 @@ class VContainer {
     height: _height,
     decoration:
         (decoration?.copyWith(
-          gradient: LinearGradient(colors: colors, begin: begin, end: end),
+          gradient: LinearGradient(
+            colors: colors,
+            begin: begin,
+            end: end,
+            stops: stops,
+            tileMode: tileMode,
+            transform: transform,
+          ),
         )) ??
         BoxDecoration(
-          gradient: LinearGradient(colors: colors, begin: begin, end: end),
+          gradient: LinearGradient(
+            colors: colors,
+            begin: begin,
+            end: end,
+            stops: stops,
+            tileMode: tileMode,
+            transform: transform,
+          ),
         ),
   );
 
