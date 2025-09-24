@@ -1,3 +1,6 @@
+## 0.0.9
+* Add theme extension for BuildContext in Flutter
+
 ## 0.0.8
 * Add a new extension method for List<Widget> to create a Stack layout.
 * Add responsive value helper and GridRow widget
