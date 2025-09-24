@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kaeru_ui/extensions/clip.dart';
+import 'package:kaeru_ui/extensions/generic/list/wrap.dart';
 
 class Breakpoints {
   static double xs = 400; // extra small
@@ -9,6 +11,7 @@ class Breakpoints {
 
 extension KaeruResponsiveHelpers on BuildContext {
   double get width => MediaQuery.of(this).size.width;
+  double get height => MediaQuery.of(this).size.height;
 
   bool get isXs => width < Breakpoints.xs;
   bool get isSm => width >= Breakpoints.xs && width < Breakpoints.sm;
@@ -129,5 +132,87 @@ class GridRow extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class FlexCol extends StatelessWidget {
+  final int xs;
+  final int? sm;
+  final int? md;
+  final int? lg;
+  final int? xl;
+  final Widget child;
+
+  static const int totalColumns = 12;
+
+  const FlexCol({
+    super.key,
+    this.xs = 12,
+    this.sm,
+    this.md,
+    this.lg,
+    this.xl,
+    required this.child,
+  });
+
+  int _getColSpan(BuildContext context) {
+    final width = context.width;
+    if (width < Breakpoints.xs) return xs;
+    if (width < Breakpoints.sm) return sm ?? xs;
+    if (width < Breakpoints.md) return md ?? sm ?? xs;
+    if (width < Breakpoints.lg) return lg ?? md ?? sm ?? xs;
+    return xl ?? lg ?? md ?? sm ?? xs;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final span = _getColSpan(context).clamp(1, totalColumns);
+    final colWidth = context.width / totalColumns * span;
+
+    return child.width(colWidth);
+  }
+}
+
+class FlexRow extends StatelessWidget {
+  final List<Widget> children;
+  final double spacing;
+  final double runSpacing;
+  final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
+
+  const FlexRow({
+    super.key,
+    required this.children,
+    this.spacing = 8,
+    this.runSpacing = 8,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return children.wrap(
+      spacing: spacing,
+      runSpacing: runSpacing,
+      crossAxisAlignment: WrapCrossAlignment.start,
+      alignment: _mapMainAxisAlignment(mainAxisAlignment),
+    );
+  }
+
+  WrapAlignment _mapMainAxisAlignment(MainAxisAlignment alignment) {
+    switch (alignment) {
+      case MainAxisAlignment.center:
+        return WrapAlignment.center;
+      case MainAxisAlignment.end:
+        return WrapAlignment.end;
+      case MainAxisAlignment.spaceBetween:
+        return WrapAlignment.spaceBetween;
+      case MainAxisAlignment.spaceAround:
+        return WrapAlignment.spaceAround;
+      case MainAxisAlignment.spaceEvenly:
+        return WrapAlignment.spaceEvenly;
+      case MainAxisAlignment.start:
+        return WrapAlignment.start;
+    }
   }
 }
