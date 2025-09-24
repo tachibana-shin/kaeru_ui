@@ -216,3 +216,52 @@ class FlexRow extends StatelessWidget {
     }
   }
 }
+
+extension KaeruFlexListColExt on List<FlexCol> {
+  FlexRow toFlex({
+    Key? key,
+    double spacing = 8,
+    double runSpacing = 8,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  }) => FlexRow(
+    key: key,
+    spacing: spacing,
+    runSpacing: runSpacing,
+    crossAxisAlignment: crossAxisAlignment,
+    mainAxisAlignment: mainAxisAlignment,
+    children: this,
+  );
+}
+
+extension KaeruFlexListExt on List<Widget> {
+  List<FlexCol> toFlexCol({
+    Key? key,
+    int xs = 12,
+    int? sm,
+    int? md,
+    int? lg,
+    int? xl,
+  }) => map(
+    (child) =>
+        FlexCol(key: key, xs: xs, sm: sm, md: md, lg: lg, xl: xl, child: child),
+  ).toList();
+
+  FlexRow toFlex({
+    int xs = 12,
+    int? sm,
+    int? md,
+    int? lg,
+    int? xl,
+
+    double spacing = 8,
+    double runSpacing = 8,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  }) => toFlexCol(xs: xs, sm: sm, md: md, lg: lg, xl: xl).toFlex(
+    spacing: spacing,
+    runSpacing: runSpacing,
+    crossAxisAlignment: crossAxisAlignment,
+    mainAxisAlignment: mainAxisAlignment,
+  );
+}
