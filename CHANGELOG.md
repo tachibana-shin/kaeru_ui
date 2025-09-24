@@ -1,3 +1,10 @@
+## 0.0.12
+* Add clip method to KaeruWidgetClipExtension and update VContainer gradient options
+* 
+* - Introduced a `clip` method for clipping widgets in the `KaeruWidgetClipExtension`.
+* - Updated the `linearGradientBg` method in `VContainer` to include 
+*   additional parameters for gradient customization.
+
 ## 0.0.11
 * fix export `card` extension
 
