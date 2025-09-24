@@ -1,5 +1,6 @@
-export 'extensions/generic/list/flex_gap.dart';
 export 'extensions/generic/list/flex.dart';
+export 'extensions/generic/list/flex_gap.dart';
+export 'extensions/generic/list/stack.dart';
 export 'extensions/generic/list/wrap.dart';
 
 export 'extensions/generic/color.dart';
