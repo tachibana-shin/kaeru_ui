@@ -1,5 +1,13 @@
+/// Extension to wrap any widget in an InkWell with configuration.
+///
+/// Example:
+/// ```dart
+/// Text('Click').inkWell(onTap: () => print('InkWell tapped'));
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Wrap any widget in an InkWell with configuration.
 extension KaeruInkWellExtension on Widget {
   Widget inkWell(
     GestureTapCallback? onTap, {

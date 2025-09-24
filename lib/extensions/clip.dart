@@ -1,5 +1,14 @@
+/// Extension for quick clipping methods on any widget.
+///
+/// Example:
+/// ```dart
+/// Image.network(url).circle;
+/// Container().rounded(12);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Quick clipping methods on any widget.
 extension KaeruWidgetClipExtension on Widget {
   Widget rounded([double radius = 8]) =>
       ClipRRect(borderRadius: BorderRadius.circular(radius), child: this);

@@ -18,10 +18,22 @@ void main() {
 
     test('pt/pb/pl/pr apply directional padding', () {
       const v = 12.0;
-      expect((const Text('A').pt(v) as Padding).padding, const EdgeInsets.only(top: v));
-      expect((const Text('A').pb(v) as Padding).padding, const EdgeInsets.only(bottom: v));
-      expect((const Text('A').pl(v) as Padding).padding, const EdgeInsets.only(left: v));
-      expect((const Text('A').pr(v) as Padding).padding, const EdgeInsets.only(right: v));
+      expect(
+        (const Text('A').pt(v) as Padding).padding,
+        const EdgeInsets.only(top: v),
+      );
+      expect(
+        (const Text('A').pb(v) as Padding).padding,
+        const EdgeInsets.only(bottom: v),
+      );
+      expect(
+        (const Text('A').pl(v) as Padding).padding,
+        const EdgeInsets.only(left: v),
+      );
+      expect(
+        (const Text('A').pr(v) as Padding).padding,
+        const EdgeInsets.only(right: v),
+      );
     });
   });
 }

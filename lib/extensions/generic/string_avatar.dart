@@ -1,7 +1,19 @@
+/// Extension to treat String as image URL and build a CircleAvatar.
+///
+/// Example:
+/// ```dart
+/// 'https://example.com/a.png'.avatar(radius: 24, backgroundColor: Colors.blueGrey);
+/// ```
+
 import 'package:flutter/material.dart';
 
 extension KaeruAvatar on String {
-  /// Treat string as image URL
+  /// Builds a CircleAvatar from a string URL.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'https://...'.avatar(radius: 32)
+  /// ```
   Widget avatar({double radius = 20, Color? backgroundColor}) {
     return CircleAvatar(
       radius: radius,

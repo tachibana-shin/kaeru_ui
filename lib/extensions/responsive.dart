@@ -1,3 +1,12 @@
+/// Responsive helpers and grid system for Kaeru UI.
+///
+/// Example:
+/// ```dart
+/// context.isXs; // true if width < 400
+/// Text('Mobile view').xsOnly(context);
+/// GridRow(xs: 2, md: 4, children: [...]);
+/// ```
+
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/clip.dart';
 import 'package:kaeru_ui/extensions/generic/list/wrap.dart';
@@ -9,6 +18,7 @@ class Breakpoints {
   static double lg = 1440; // large devices
 }
 
+/// Responsive helpers on BuildContext.
 extension KaeruResponsiveHelpers on BuildContext {
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
@@ -45,6 +55,8 @@ extension KaeruResponsiveHelpers on BuildContext {
   }
 }
 
+/// Responsive widget visibility extensions.
+/// Example: `Text('Mobile only').xsOnly(context)`
 extension KaeruResponsiveWidget on Widget {
   /// Only show on specific breakpoints
   Widget xsOnly(BuildContext context) =>
@@ -82,6 +94,11 @@ extension KaeruResponsiveWidget on Widget {
       context.lgUp ? this : const SizedBox.shrink();
 }
 
+/// Responsive grid row for Kaeru UI.
+/// Example:
+/// ```dart
+/// GridRow(xs: 2, md: 4, children: [...])
+/// ```
 class GridRow extends StatelessWidget {
   final int xs;
   final int? sm;
@@ -135,6 +152,11 @@ class GridRow extends StatelessWidget {
   }
 }
 
+/// Responsive flex column for Kaeru UI.
+/// Example:
+/// ```dart
+/// FlexCol(xs: 12, md: 6, child: Container())
+/// ```
 class FlexCol extends StatelessWidget {
   final int xs;
   final int? sm;
@@ -173,6 +195,11 @@ class FlexCol extends StatelessWidget {
   }
 }
 
+/// Responsive flex row for Kaeru UI.
+/// Example:
+/// ```dart
+/// FlexRow(children: [FlexCol(...), FlexCol(...)])
+/// ```
 class FlexRow extends StatelessWidget {
   final List<Widget> children;
   final double spacing;
@@ -217,6 +244,7 @@ class FlexRow extends StatelessWidget {
   }
 }
 
+/// Extension to convert List<FlexCol> to FlexRow.
 extension KaeruFlexListColExt on List<FlexCol> {
   FlexRow toFlex({
     Key? key,
@@ -234,6 +262,7 @@ extension KaeruFlexListColExt on List<FlexCol> {
   );
 }
 
+/// Extension to convert List<Widget> to FlexRow with columns.
 extension KaeruFlexListExt on List<Widget> {
   List<FlexCol> toFlexCol({
     Key? key,

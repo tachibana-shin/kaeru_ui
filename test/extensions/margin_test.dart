@@ -18,10 +18,22 @@ void main() {
 
     test('mt/mb/ml/mr set directional margins', () {
       const v = 7.0;
-      expect((const Text('A').mt(v) as Container).margin, const EdgeInsets.only(top: v));
-      expect((const Text('A').mb(v) as Container).margin, const EdgeInsets.only(bottom: v));
-      expect((const Text('A').ml(v) as Container).margin, const EdgeInsets.only(left: v));
-      expect((const Text('A').mr(v) as Container).margin, const EdgeInsets.only(right: v));
+      expect(
+        (const Text('A').mt(v) as Container).margin,
+        const EdgeInsets.only(top: v),
+      );
+      expect(
+        (const Text('A').mb(v) as Container).margin,
+        const EdgeInsets.only(bottom: v),
+      );
+      expect(
+        (const Text('A').ml(v) as Container).margin,
+        const EdgeInsets.only(left: v),
+      );
+      expect(
+        (const Text('A').mr(v) as Container).margin,
+        const EdgeInsets.only(right: v),
+      );
     });
   });
 }

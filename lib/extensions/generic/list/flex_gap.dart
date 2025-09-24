@@ -1,5 +1,14 @@
+/// Extension to build Row/Column with gaps from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('1'), Text('2'), Text('3')].hStackWithGap(gap: 8);
+/// [Text('A'), Text('B'), Text('C')].vStackWithGap(gap: 12);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Builds Row/Column with gaps from List<Widget>.
 extension KaeruFlexGapExtension on List<Widget> {
   // ===== HStack with gap =====
   Widget hStackWithGap({

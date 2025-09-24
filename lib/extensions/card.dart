@@ -1,5 +1,13 @@
+/// Extension to wrap widget in a Card.
+///
+/// Example:
+/// ```dart
+/// Text('Card').card(color: Colors.blue, elevation: 4);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Wraps a widget in a Card.
 extension KaeruCardExtension on Widget {
   Widget card({
     Key? key,

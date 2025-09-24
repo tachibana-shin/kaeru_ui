@@ -1,6 +1,27 @@
+/// Extension for concise FutureBuilder usage.
+///
+/// Example:
+/// ```dart
+/// myFuture.futureBuilder(
+///   success: (ctx, data) => Text('$data'),
+///   loading: (_) => CircularProgressIndicator(),
+/// );
+/// ```
+
 import 'package:flutter/widgets.dart';
 
+/// Wraps Future<T> in a FutureBuilder with success/error/loading builders.
 extension KaeruFutureBuilder<T> on Future<T> {
+  /// Wraps Future<T> in a FutureBuilder with success/error/loading builders.
+  ///
+  /// Example:
+  /// ```dart
+  /// future.futureBuilder(
+  ///   success: (ctx, data) => Text('$data'),
+  ///   error: (ctx, err) => Text('Error: $err'),
+  ///   loading: (ctx) => CircularProgressIndicator(),
+  /// );
+  /// ```
   Widget futureBuilder({
     required Widget Function(BuildContext, T data) success,
     Widget Function(BuildContext, Object? error)? error,

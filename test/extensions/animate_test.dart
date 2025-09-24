@@ -10,10 +10,17 @@ void main() {
       final w = const Text('A').fadeIn();
       final key = UniqueKey();
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: KeyedSubtree(key: key, child: w))),
+        MaterialApp(
+          home: Scaffold(
+            body: KeyedSubtree(key: key, child: w),
+          ),
+        ),
       );
       expect(
-        find.descendant(of: find.byKey(key), matching: find.byType(FadeTransition)),
+        find.descendant(
+          of: find.byKey(key),
+          matching: find.byType(FadeTransition),
+        ),
         findsOneWidget,
       );
     });
@@ -22,10 +29,17 @@ void main() {
       final w = const Text('A').slideUp();
       final key = UniqueKey();
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: KeyedSubtree(key: key, child: w))),
+        MaterialApp(
+          home: Scaffold(
+            body: KeyedSubtree(key: key, child: w),
+          ),
+        ),
       );
       expect(
-        find.descendant(of: find.byKey(key), matching: find.byType(SlideTransition)),
+        find.descendant(
+          of: find.byKey(key),
+          matching: find.byType(SlideTransition),
+        ),
         findsOneWidget,
       );
     });
@@ -34,10 +48,17 @@ void main() {
       final w = const Text('A').scale();
       final key = UniqueKey();
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: KeyedSubtree(key: key, child: w))),
+        MaterialApp(
+          home: Scaffold(
+            body: KeyedSubtree(key: key, child: w),
+          ),
+        ),
       );
       expect(
-        find.descendant(of: find.byKey(key), matching: find.byType(ScaleTransition)),
+        find.descendant(
+          of: find.byKey(key),
+          matching: find.byType(ScaleTransition),
+        ),
         findsOneWidget,
       );
     });
@@ -46,10 +67,17 @@ void main() {
       final w = KaeruAnimation(const Text('A')).rotate();
       final key = UniqueKey();
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: KeyedSubtree(key: key, child: w))),
+        MaterialApp(
+          home: Scaffold(
+            body: KeyedSubtree(key: key, child: w),
+          ),
+        ),
       );
       expect(
-        find.descendant(of: find.byKey(key), matching: find.byType(RotationTransition)),
+        find.descendant(
+          of: find.byKey(key),
+          matching: find.byType(RotationTransition),
+        ),
         findsOneWidget,
       );
     });

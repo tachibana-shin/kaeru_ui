@@ -1,7 +1,15 @@
+/// Extension to build a Stack widget from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Container(color: Colors.red), Text("On top")].stack(alignment: Alignment.center)
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Builds a Stack widget from List<Widget>.
 extension KaeruStackListExt on List<Widget> {
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// [

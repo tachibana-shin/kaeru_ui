@@ -41,17 +41,16 @@ void main() {
     });
 
     test('respects alignment parameters', () {
-      final children = <Widget>[
-        const Text('A'),
-        const Text('B'),
-      ];
+      final children = <Widget>[const Text('A'), const Text('B')];
 
-      final row = children.hStackWithGap(
-        gap: 4,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-      ) as Row;
+      final row =
+          children.hStackWithGap(
+                gap: 4,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+              )
+              as Row;
 
       expect(row.mainAxisAlignment, MainAxisAlignment.spaceBetween);
       expect(row.crossAxisAlignment, CrossAxisAlignment.end);
@@ -61,10 +60,7 @@ void main() {
 
   group('KaeruFlexGapExtension.vStackWithGap', () {
     test('returns Column with original children when gap = 0', () {
-      final children = <Widget>[
-        const Text('A'),
-        const Text('B'),
-      ];
+      final children = <Widget>[const Text('A'), const Text('B')];
 
       final column = children.vStackWithGap(gap: 0) as Column;
       expect(column, isA<Column>());
@@ -95,17 +91,16 @@ void main() {
     });
 
     test('respects alignment parameters', () {
-      final children = <Widget>[
-        const Text('A'),
-        const Text('B'),
-      ];
+      final children = <Widget>[const Text('A'), const Text('B')];
 
-      final column = children.vStackWithGap(
-        gap: 6,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-      ) as Column;
+      final column =
+          children.vStackWithGap(
+                gap: 6,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+              )
+              as Column;
 
       expect(column.mainAxisAlignment, MainAxisAlignment.center);
       expect(column.crossAxisAlignment, CrossAxisAlignment.start);

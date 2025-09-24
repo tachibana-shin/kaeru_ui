@@ -1,5 +1,13 @@
+/// Extension to wrap widget in a badge-style container.
+///
+/// Example:
+/// ```dart
+/// Text('5').badge(bgColor: Colors.green, fontSize: 14);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Wraps a widget in a badge-style container.
 extension KaeruBadgeWidget on Widget {
   Widget badge({
     Color bgColor = Colors.red,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:kaeru_ui/extensions/generic/color.dart';
 
+/// A chainable text builder for Flutter.
 class VText {
+  /// The text data.
   final String? data;
   final TextStyle _style;
   final TextAlign? _align;
@@ -20,6 +22,7 @@ class VText {
   final TextHeightBehavior? textHeightBehavior;
   final Color? selectionColor;
 
+  /// Creates a [VText] with optional parameters.
   const VText(
     this.data, {
     TextStyle? style,
@@ -43,6 +46,8 @@ class VText {
        _textScaler = textScaler;
 
   // ===== Chainable style methods =====
+
+  /// Returns a copy with merged [style].
   VText copyWithStyle(TextStyle style) => VText(
     data,
     style: _style.merge(style),
@@ -61,11 +66,22 @@ class VText {
     selectionColor: selectionColor,
   );
 
+  /// Sets the text color.
   VText color(Color c) => copyWithStyle(TextStyle(color: c));
+
+  /// Sets the font size.
   VText size(double s) => copyWithStyle(TextStyle(fontSize: s));
+
+  /// Sets letter spacing.
   VText spacing(double v) => copyWithStyle(TextStyle(letterSpacing: v));
+
+  /// Sets word spacing.
   VText wordSpacing(double v) => copyWithStyle(TextStyle(wordSpacing: v));
+
+  /// Sets font weight.
   VText weight(FontWeight w) => copyWithStyle(TextStyle(fontWeight: w));
+
+  /// Adds a shadow to the text.
   VText shadow({
     Color color = Colors.black26,
     double blur = 2,
@@ -75,32 +91,52 @@ class VText {
       shadows: [Shadow(color: color, blurRadius: blur, offset: offset)],
     ),
   );
-  VText bg(Color c) =>
-      copyWithStyle(TextStyle(backgroundColor: c));
 
-  // Font weight shortcuts
+  /// Sets background color.
+  VText bg(Color c) => copyWithStyle(TextStyle(backgroundColor: c));
+
+  /// Font weight shortcuts
+  /// Thin font weight.
   VText get thin => weight(FontWeight.w100);
+
+  /// Light font weight.
   VText get light => weight(FontWeight.w300);
+
+  /// Normal font weight.
   VText get normal => weight(FontWeight.w400);
+
+  /// Medium font weight.
   VText get medium => weight(FontWeight.w500);
+
+  /// Semibold font weight.
   VText get semibold => weight(FontWeight.w600);
+
+  /// Bold font weight.
   VText get bold => weight(FontWeight.bold);
+
+  /// Extra bold font weight.
   VText get extrabold => weight(FontWeight.w800);
+
+  /// Black font weight.
   VText get black => weight(FontWeight.w900);
 
-  // Font style
+  /// Italic font style.
   VText get italic =>
       copyWithStyle(const TextStyle(fontStyle: FontStyle.italic));
 
-  // Decorations
+  /// Underline decoration.
   VText get underline =>
       copyWithStyle(const TextStyle(decoration: TextDecoration.underline));
+
+  /// Line through decoration.
   VText get lineThrough =>
       copyWithStyle(const TextStyle(decoration: TextDecoration.lineThrough));
+
+  /// Overline decoration.
   VText get overline =>
       copyWithStyle(const TextStyle(decoration: TextDecoration.overline));
 
-  // Layout
+  /// Sets text alignment.
   VText align(TextAlign a) => VText(
     data,
     style: _style,
@@ -109,11 +145,20 @@ class VText {
     overflow: _overflow,
     textScaler: _textScaler,
   );
+
+  /// Center alignment.
   VText get center => align(TextAlign.center);
+
+  /// Right alignment.
   VText get right => align(TextAlign.right);
+
+  /// Left alignment.
   VText get left => align(TextAlign.left);
+
+  /// Justify alignment.
   VText get justify => align(TextAlign.justify);
 
+  /// Sets max lines.
   VText maxLines(int n) => VText(
     data,
     style: _style,
@@ -122,6 +167,8 @@ class VText {
     overflow: _overflow,
     textScaler: _textScaler,
   );
+
+  /// Clips overflow.
   VText get overflowClip => VText(
     data,
     style: _style,
@@ -130,6 +177,8 @@ class VText {
     overflow: TextOverflow.clip,
     textScaler: _textScaler,
   );
+
+  /// Ellipsis overflow.
   VText get overflowEllipsis => VText(
     data,
     style: _style,
@@ -138,6 +187,8 @@ class VText {
     overflow: TextOverflow.ellipsis,
     textScaler: _textScaler,
   );
+
+  /// Fade overflow.
   VText get overflowFade => VText(
     data,
     style: _style,
@@ -147,6 +198,7 @@ class VText {
     textScaler: _textScaler,
   );
 
+  /// Scales the text.
   VText scale(double factor) => VText(
     data,
     style: _style,
@@ -156,7 +208,7 @@ class VText {
     textScaler: TextScaler.linear(factor),
   );
 
-  // Text transform
+  /// Transforms text to uppercase.
   VText get uppercase => VText(
     data?.toUpperCase() ?? '',
     style: _style,
@@ -165,6 +217,8 @@ class VText {
     overflow: _overflow,
     textScaler: _textScaler,
   );
+
+  /// Transforms text to lowercase.
   VText get lowercase => VText(
     data?.toLowerCase() ?? '',
     style: _style,
@@ -173,6 +227,8 @@ class VText {
     overflow: _overflow,
     textScaler: _textScaler,
   );
+
+  /// Capitalizes the first letter.
   VText get capitalize {
     if (data == null || data!.isEmpty) return this;
     final str = data!;
@@ -187,46 +243,92 @@ class VText {
     );
   }
 
-  // Size aliases
+  /// Extra small font size.
   VText get xs => size(12);
+
+  /// Small font size.
   VText get sm => size(14);
+
+  /// Base font size.
   VText get base => size(16);
+
+  /// Large font size.
   VText get lg => size(18);
+
+  /// Extra large font size.
   VText get xl => size(20);
+
+  /// 2x extra large font size.
   VText get xl2 => size(24);
+
+  /// 3x extra large font size.
   VText get xl3 => size(30);
+
+  /// 4x extra large font size.
   VText get xl4 => size(36);
+
+  /// 5x extra large font size.
   VText get xl5 => size(48);
+
+  /// 6x extra large font size.
   VText get xl6 => size(60);
 
-  // Opacity
+  /// Sets opacity for text color.
   VText opacity(double o) =>
       copyWithStyle(TextStyle(color: (_style.color ?? Colors.black).o(o)));
+
+  /// 25% opacity.
   VText get opacity25 => opacity(0.25);
+
+  /// 50% opacity.
   VText get opacity50 => opacity(0.5);
+
+  /// 75% opacity.
   VText get opacity75 => opacity(0.75);
+
+  /// 100% opacity.
   VText get opacity100 => opacity(1.0);
 
-  // Letter spacing shorthands
+  /// Tight letter spacing.
   VText get tight => spacing(-0.5);
+
+  /// Wide letter spacing.
   VText get wide => spacing(0.5);
 
-  // Color shortcuts
+  /// Red color shortcut.
   VText red(int shade) => color(Colors.red[shade]!);
+
+  /// Blue color shortcut.
   VText blue(int shade) => color(Colors.blue[shade]!);
+
+  /// Green color shortcut.
   VText green(int shade) => color(Colors.green[shade]!);
+
+  /// Gray color shortcut.
   VText gray(int shade) => color(Colors.grey[shade]!);
 
+  /// White color shortcut.
   VText get white => color(Colors.white);
+
+  /// Black color shortcut.
   VText get blackColor => color(Colors.black);
 
-  // ===== Line height =====
+  /// Sets line height.
   VText lineHeight(double h) => copyWithStyle(TextStyle(height: h));
+
+  /// Tight line height.
   VText get lhTight => lineHeight(0.8);
+
+  /// Normal line height.
   VText get lhNormal => lineHeight(1.0);
+
+  /// Relaxed line height.
   VText get lhRelaxed => lineHeight(1.5);
+
+  /// Loose line height.
   VText get lhLoose => lineHeight(2.0);
 
+  /// Builds the Flutter [Text] widget.
   Text make() => Text(
     data ?? '',
     style: _style,

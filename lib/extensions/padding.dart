@@ -1,7 +1,15 @@
+/// Extension for shorthand padding on any widget.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').p(12).px(8);
+/// ```
+
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/generic/edge_insets.dart';
 import 'package:kaeru_ui/extensions/generic/num.dart';
 
+/// Shorthand padding on any widget.
 extension KaeruPaddingExtension on Widget {
   Widget pad(EdgeInsets insets) => Padding(padding: insets, child: this);
   Widget p(double v, [double? y]) =>

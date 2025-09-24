@@ -1,3 +1,17 @@
+/// Kaeru UI Extension Library
+///
+/// This library exports all chainable extensions and virtual widgets for concise Flutter UI development.
+///
+/// Example usage:
+/// ```dart
+/// import 'package:kaeru_ui/kaeru_ui.dart';
+///
+/// // Chainable text styling
+/// "Hello Kaeru".text.lg.red(600).underline.make().p(12).inkWell(onTap: () => print("Tapped")).fadeIn();
+/// ```
+///
+/// See README.md for full documentation.
+
 export 'extensions/generic/list/flex.dart';
 export 'extensions/generic/list/flex_gap.dart';
 export 'extensions/generic/list/stack.dart';

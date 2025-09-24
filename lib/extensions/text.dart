@@ -1,6 +1,14 @@
+/// Extension to bridge Text to VText for chainable styling.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').text.color(Colors.red).size(18).make();
+/// ```
+
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/virtual/v_text.dart';
 
+/// Bridges Text to VText for chainable styling.
 extension KaeruTextExtension on Text {
   VText get text => VText(
     data,

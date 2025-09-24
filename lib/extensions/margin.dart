@@ -1,6 +1,14 @@
+/// Extension for shorthand margin helpers via VContainer.
+///
+/// Example:
+/// ```dart
+/// Text('Hi').m(8).make();
+/// ```
+
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/box.dart';
 
+/// Shorthand margin helpers via VContainer.
 extension KaeruMarginExtension on Widget {
   Widget mar(EdgeInsetsGeometry p) => box.mar(p).make();
   Widget m(double v, [double? y]) =>

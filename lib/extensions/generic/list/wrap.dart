@@ -1,5 +1,13 @@
+/// Extension to build a Wrap widget from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('A'), Text('B'), Text('C')].wrap(spacing: 4, runSpacing: 8);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Builds a Wrap widget from List<Widget>.
 extension KaeruWrapExtension on List<Widget> {
   Widget wrap({
     double spacing = 0,

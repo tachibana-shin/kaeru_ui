@@ -1,3 +1,11 @@
+/// Animation extensions for chainable entrance effects.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').fadeIn().slideUp(distance: 30);
+/// ```
+library;
+
 import 'package:flutter/material.dart';
 
 /// Extension chainable animation & shimmer

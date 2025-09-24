@@ -18,9 +18,13 @@ class ClipExtensionExample extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Example of rounded clip
-              const Text(
-                'Rounded Clip',
-              ).rounded(20).box.bg(Colors.blue).size(100, 100).alignCenter.make(),
+              const Text('Rounded Clip')
+                  .rounded(20)
+                  .box
+                  .bg(Colors.blue)
+                  .size(100, 100)
+                  .alignCenter
+                  .make(),
 
               const SizedBox(height: 20),
 

@@ -1,7 +1,15 @@
+/// Extension to start a chainable Container builder via VContainer.
+///
+/// Example:
+/// ```dart
+/// Text('A').box.bg(Colors.red).rounded(4).make();
+/// ```
+
 import 'package:flutter/material.dart';
 
 import '../virtual/v_container.dart';
 
+/// Begins a chainable Container builder via VContainer.
 extension KaeruBoxExtension on Widget {
   // ===== Wrap with Container shorthand =====
   VContainer get box => VContainer(child: this);

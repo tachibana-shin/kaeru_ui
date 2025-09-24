@@ -1,5 +1,13 @@
+/// Extension for chainable transforms on any widget.
+///
+/// Example:
+/// ```dart
+/// Icon(Icons.arrow_upward).rotate(pi / 4).translate(dx: 10);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Chainable transforms on any widget.
 extension KaeruWidgetTransform on Widget {
   Widget rotate(double radians) =>
       Transform.rotate(angle: radians, child: this);

@@ -1,5 +1,13 @@
+/// Extension to wrap widget in Positioned within a Stack.
+///
+/// Example:
+/// ```dart
+/// Container().positioned(top: 0, left: 0);
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Wraps widget in Positioned within a Stack.
 extension KaeruPositionedX on Widget {
   /// Wraps the built Container into a Positioned widget
   Positioned positioned({

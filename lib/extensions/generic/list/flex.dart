@@ -1,5 +1,14 @@
+/// Extension to build Row/Column from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('A'), Text('B'), Text('C')].hStack(mainAxisAlignment: MainAxisAlignment.spaceBetween);
+/// [Text('A'), Text('B'), Text('C')].vStack();
+/// ```
+
 import 'package:flutter/material.dart';
 
+/// Builds Row/Column from List<Widget>.
 extension KaeruFlexExtension on List<Widget> {
   // ===== Row / HStack =====
   Widget hStack({
