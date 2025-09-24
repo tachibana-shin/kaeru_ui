@@ -43,6 +43,7 @@ export 'extensions/positioned.dart';
 export 'extensions/responsive.dart';
 export 'extensions/spacing.dart';
 export 'extensions/text.dart';
+export 'extensions/theme.dart';
 export 'extensions/transform.dart';
 export 'extensions/visibility.dart';
 
