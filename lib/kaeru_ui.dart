@@ -30,6 +30,7 @@ export 'extensions/animate.dart';
 export 'extensions/aspect_ratio.dart';
 export 'extensions/badge.dart';
 export 'extensions/box.dart';
+export 'extensions/card.dart';
 export 'extensions/clip.dart';
 export 'extensions/display.dart';
 export 'extensions/flex.dart';
