@@ -1,3 +1,7 @@
+## 0.0.7
+* Add new clipping methods to KaeruWidgetClipExtension
+*Introduce methods to set width, height, and size for widgets.
+
 ## 0.0.6
 * add `card` extension
 
