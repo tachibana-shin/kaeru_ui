@@ -1,3 +1,8 @@
+## 0.0.8
+* Add a new extension method for List<Widget> to create a Stack layout.
+* Add responsive value helper and GridRow widget
+* ADD responsive layout components for FlexCol and FlexRow
+
 ## 0.0.7
 * Add new clipping methods to KaeruWidgetClipExtension
 *Introduce methods to set width, height, and size for widgets.
