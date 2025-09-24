@@ -1,3 +1,6 @@
+## 0.0.13
+* Add align method to KaeruFlexWidgetExtension
+
 ## 0.0.12
 * Add clip method to KaeruWidgetClipExtension and update VContainer gradient options
 * 
