@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 
+/// Extension to treat String as image URL and build a CircleAvatar.
 extension KaeruAvatar on String {
   /// Builds a CircleAvatar from a string URL.
   ///

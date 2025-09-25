@@ -55,6 +55,18 @@ class DemoPage extends StatelessWidget {
 }
 ```
 
+---
+
+### For Large Language Models (LLMs)
+
+This project includes a `llm.txt` file that contains all public APIs (functions, getters, extensions, etc.) and their corresponding documentation. This file is specifically formatted to be easily ingested by Large Language Models to provide them with the full context of this library.
+
+**How to use:**
+
+You can copy the entire content of `llm.txt` and paste it into your chat with an LLM to "teach" it about this library. Afterwards, the LLM will be able to accurately answer questions or generate code snippets using this library.
+
+---
+
 # Kaeru UI Responsive System
 
 Kaeru UI provides a **responsive grid system** and **helper extensions**

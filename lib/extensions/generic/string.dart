@@ -12,6 +12,7 @@
 
 import 'package:kaeru_ui/virtual/v_text.dart';
 
+/// String case conversion extensions.
 extension KaeruStringCaseExt on String {
   /// Capitalizes the first letter of the string.
   ///

@@ -10,12 +10,18 @@ import 'package:flutter/material.dart';
 /// Alignment, scrolling, and flex wrappers on any widget.
 extension KaeruFlexWidgetExtension on Widget {
   // ===== Alignment shorthand =====
+  /// Aligns the widget to the center.
   Widget get centered => Align(alignment: Alignment.center, child: this);
+  /// Aligns the widget to the top left.
   Widget get topLeft => Align(alignment: Alignment.topLeft, child: this);
+  /// Aligns the widget to the top right.
   Widget get topRight => Align(alignment: Alignment.topRight, child: this);
+  /// Aligns the widget to the bottom left.
   Widget get bottomLeft => Align(alignment: Alignment.bottomLeft, child: this);
+  /// Aligns the widget to the bottom right.
   Widget get bottomRight =>
       Align(alignment: Alignment.bottomRight, child: this);
+  /// Wraps the widget in an [Align] widget with the specified [alignment].
   Align align(
     Alignment alignment, {
     Key? key,
@@ -30,6 +36,7 @@ extension KaeruFlexWidgetExtension on Widget {
   );
 
   // ===== Scrollable =====
+  /// Wraps the widget in a [SingleChildScrollView].
   Widget scrollable({
     Axis axis = Axis.vertical,
     bool reverse = false,
@@ -42,9 +49,11 @@ extension KaeruFlexWidgetExtension on Widget {
   );
 
   // ===== Expanded =====
+  /// Wraps the widget in an [Expanded] widget.
   Widget expand({int flex = 1}) => Expanded(flex: flex, child: this);
 
   // ===== Flexible =====
+  /// Wraps the widget in a [Flexible] widget.
   Widget flexible({int flex = 1, FlexFit fit = FlexFit.loose}) =>
       Flexible(flex: flex, fit: fit, child: this);
 }

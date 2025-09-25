@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 // fork from package `get` flutter
+/// Extension for accessing theme data from [BuildContext].
 extension KaeruThemeExtension on BuildContext {
   /// The same of [MediaQuery.of(context).size]
   Size get mediaQuerySize => MediaQuery.of(this).size;
 
+  /// The current [ThemeData].
   ThemeData get theme => Theme.of(this);
 
   /// Check if dark mode theme is enable

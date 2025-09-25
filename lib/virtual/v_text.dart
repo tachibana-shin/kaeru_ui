@@ -12,14 +12,23 @@ class VText {
   final TextOverflow? _overflow;
   final TextScaler? _textScaler;
 
+  /// The strut style.
   final StrutStyle? strutStyle;
+  /// The text direction.
   final TextDirection? textDirection;
+  /// The locale.
   final Locale? locale;
+  /// Whether the text should wrap.
   final bool? softWrap;
+  /// The semantics label.
   final String? semanticsLabel;
+  /// The semantics identifier.
   final String? semanticsIdentifier;
+  /// The text width basis.
   final TextWidthBasis? textWidthBasis;
+  /// The text height behavior.
   final TextHeightBehavior? textHeightBehavior;
+  /// The selection color.
   final Color? selectionColor;
 
   /// Creates a [VText] with optional parameters.

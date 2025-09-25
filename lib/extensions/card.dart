@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// Wraps a widget in a Card.
 extension KaeruCardExtension on Widget {
+  /// Wraps the widget in a [Card].
   Widget card({
     Key? key,
     Color? color,

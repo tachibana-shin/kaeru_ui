@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// Builds a Stack widget from List<Widget>.
 extension KaeruStackListExt on List<Widget> {
+  /// Creates a [Stack] with the given widgets.
   ///
   /// Example:
   /// ```dart

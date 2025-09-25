@@ -33,15 +33,19 @@ extension KaeruPositionedX on Widget {
   Positioned get positionedFill => Positioned.fill(child: this);
 
   /// Shortcuts
+  /// Positions the widget at the top left of the stack.
   Positioned pTopLeft({double? top, double? left}) =>
       positioned(top: top ?? 0, left: left ?? 0);
 
+  /// Positions the widget at the top right of the stack.
   Positioned pTopRight({double? top, double? right}) =>
       positioned(top: top ?? 0, right: right ?? 0);
 
+  /// Positions the widget at the bottom left of the stack.
   Positioned pBottomLeft({double? bottom, double? left}) =>
       positioned(bottom: bottom ?? 0, left: left ?? 0);
 
+  /// Positions the widget at the bottom right of the stack.
   Positioned pBottomRight({double? bottom, double? right}) =>
       positioned(bottom: bottom ?? 0, right: right ?? 0);
 }

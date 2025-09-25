@@ -1,0 +1,2134 @@
+--- File: lib/kaeru_ui.dart ---
+
+/// Kaeru UI Extension Library
+///
+/// This library exports all chainable extensions and virtual widgets for concise Flutter UI development.
+///
+/// Example usage:
+/// ```dart
+/// import 'package:kaeru_ui/kaeru_ui.dart';
+///
+/// // Chainable text styling
+/// "Hello Kaeru".text.lg.red(600).underline.make().p(12).inkWell(onTap: () => print("Tapped")).fadeIn();
+/// ```
+///
+/// See README.md for full documentation.
+
+
+--- File: lib/extensions/animate.dart ---
+
+/// Animation extensions for chainable entrance effects.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').fadeIn().slideUp(distance: 30);
+/// ```
+
+/// Extension chainable animation & shimmer
+extension KaeruAnimation on Widget {
+
+  /// Fades in the widget.
+  Widget fadeIn({
+    Key? key,
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.easeIn,
+  })
+
+  /// Slides up the widget.
+  Widget slideUp({
+    Key? key,
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.easeOut,
+    double distance = 50,
+  })
+
+  /// Scales the widget.
+  Widget scale({
+    Key? key,
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.easeInOut,
+    double begin = 0.8,
+    double end = 1.0,
+  })
+
+  /// Rotates the widget.
+  Widget rotate({
+    Key? key,
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.easeInOut,
+    double begin = -0.5, // radians
+    double end = 0.0,
+  })
+
+}
+
+--- File: lib/extensions/aspect_ratio.dart ---
+
+/// Extension to wrap widget with AspectRatio.
+///
+/// Example:
+/// ```dart
+/// Container().aspectRatio(16/9);
+/// ```
+
+/// Wraps the widget with AspectRatio.
+extension KaeruAspectRatio on Widget {
+
+  /// Wraps the widget with AspectRatio
+  Widget aspectRatio(double ratio)
+
+}
+
+--- File: lib/extensions/badge.dart ---
+
+/// Extension to wrap widget in a badge-style container.
+///
+/// Example:
+/// ```dart
+/// Text('5').badge(bgColor: Colors.green, fontSize: 14);
+/// ```
+
+/// Wraps a widget in a badge-style container.
+extension KaeruBadgeWidget on Widget {
+
+  /// Wraps the widget in a badge-style container.
+  Widget badge({
+    Color bgColor = Colors.red,
+    Color textColor = Colors.white,
+    double paddingH = 6,
+    double paddingV = 2,
+    double borderRadius = 12,
+    double fontSize = 12,
+  })
+
+}
+
+--- File: lib/extensions/box.dart ---
+
+/// Extension to start a chainable Container builder via VContainer.
+///
+/// Example:
+/// ```dart
+/// Text('A').box.bg(Colors.red).rounded(4).make();
+/// ```
+
+/// Begins a chainable Container builder via VContainer.
+extension KaeruBoxExtension on Widget {
+
+  /// Begins a chainable [VContainer] builder.
+  VContainer get box
+
+}
+
+--- File: lib/extensions/card.dart ---
+
+/// Extension to wrap widget in a Card.
+///
+/// Example:
+/// ```dart
+/// Text('Card').card(color: Colors.blue, elevation: 4);
+/// ```
+
+/// Wraps a widget in a Card.
+extension KaeruCardExtension on Widget {
+
+  /// Wraps the widget in a [Card].
+  Widget card({
+    Key? key,
+    Color? color,
+    Color? shadowColor,
+    Color? surfaceTintColor,
+    double? elevation,
+    ShapeBorder? shape,
+    bool borderOnForeground = true,
+    EdgeInsetsGeometry? margin,
+    Clip? clipBehavior,
+    bool semanticContainer = true,
+  })
+
+}
+
+--- File: lib/extensions/clip.dart ---
+
+/// Extension for quick clipping methods on any widget.
+///
+/// Example:
+/// ```dart
+/// Image.network(url).circle;
+/// Container().rounded(12);
+/// ```
+
+/// Quick clipping methods on any widget.
+extension KaeruWidgetClipExtension on Widget {
+
+  /// Clips the widget with rounded corners.
+  Widget rounded([double radius = 8])
+
+  /// Clips the widget into a circle.
+  Widget get circle
+
+  /// Constrains the widget to a square of the given [size].
+  Widget square(double size)
+
+  /// Constrains the widget to the given [width].
+  Widget width(double width)
+
+  /// Constrains the widget to the given [height].
+  Widget height(double height)
+
+  /// Constrains the widget to the given [width] and [height].
+  Widget size(double width, double height)
+
+  /// Wraps the widget in a [ClipRect].
+  Widget clip({
+    CustomClipper<Rect>? clipper,
+    Clip clipBehavior = Clip.hardEdge,
+  })
+
+}
+
+--- File: lib/extensions/display.dart ---
+
+/// Extension for conditional display helpers.
+///
+/// Example:
+/// ```dart
+/// widget.show(isVisible);
+/// ```
+
+/// Conditional display helpers.
+extension KaeruDisplayExtension on Widget {
+
+  /// Shows the widget if [show] is true, otherwise shows a [SizedBox.shrink].
+  Widget show(bool show)
+
+  /// Always remove (no space).
+  Widget get none
+
+}
+
+--- File: lib/extensions/flex.dart ---
+
+/// Extension for alignment, scrolling, and flex wrappers on any widget.
+///
+/// Example:
+/// ```dart
+/// Icon(Icons.home).centered.expand(flex: 2);
+/// ```
+
+/// Alignment, scrolling, and flex wrappers on any widget.
+extension KaeruFlexWidgetExtension on Widget {
+
+  /// Aligns the widget to the center.
+  Widget get centered
+
+  /// Aligns the widget to the top left.
+  Widget get topLeft
+
+  /// Aligns the widget to the top right.
+  Widget get topRight
+
+  /// Aligns the widget to the bottom left.
+  Widget get bottomLeft
+
+  /// Aligns the widget to the bottom right.
+  Widget get bottomRight
+
+  /// Wraps the widget in an [Align] widget with the specified [alignment].
+  Align align(
+    Alignment alignment, {
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
+  })
+
+  /// Wraps the widget in a [SingleChildScrollView].
+  Widget scrollable({
+    Axis axis = Axis.vertical,
+    bool reverse = false,
+    ScrollPhysics? physics,
+  })
+
+  /// Wraps the widget in an [Expanded] widget.
+  Widget expand({int flex = 1})
+
+  /// Wraps the widget in a [Flexible] widget.
+  Widget flexible({int flex = 1, FlexFit fit = FlexFit.loose})
+
+}
+
+--- File: lib/extensions/gesture.dart ---
+
+/// Extension for gesture detectors on any widget.
+///
+/// Example:
+/// ```dart
+/// Text('Tap me').onTap(() => print('Tapped'));
+/// ```
+
+/// Gesture detectors on any widget.
+extension KaeruGestureExtension on Widget {
+
+  /// Wraps the widget in a [GestureDetector] and handles tap events.
+  Widget onTap(VoidCallback onTap)
+
+  /// Wraps the widget in a [GestureDetector] and handles double tap events.
+  Widget onDoubleTap(VoidCallback onDoubleTap)
+
+  /// Wraps the widget in a [GestureDetector] and handles long press events.
+  Widget onLongPress(VoidCallback onLongPress)
+
+}
+
+--- File: lib/extensions/icon.dart ---
+
+/// Extension for chainable size and color setters on Icon.
+///
+/// Example:
+/// ```dart
+/// Icon(Icons.add).size(30).iconColor(Colors.green);
+/// ```
+
+/// Chainable size and color setters on Icon.
+extension KaeruIconExtension on Icon {
+
+  /// Creates a new [Icon] with the specified [s] size.
+  Icon size(double s)
+
+  /// Creates a new [Icon] with the specified [c] color.
+  Icon iconColor(Color c)
+
+}
+
+--- File: lib/extensions/image.dart ---
+
+/// Extension for chainable methods on Image widgets.
+///
+/// Example:
+/// ```dart
+/// Image.network(url).size(width: 100, height: 60).fitBox(BoxFit.cover);
+/// ```
+
+/// Chainable methods on Image widgets.
+extension KaeruImageExtension on Image {
+
+  /// Creates a new [Image] with the specified [width] and [height].
+  Widget size({double? width, double? height})
+
+  /// Creates a new [Image] with the specified [BoxFit].
+  Image fitBox(BoxFit f)
+
+}
+
+--- File: lib/extensions/ink_well.dart ---
+
+/// Extension to wrap any widget in an InkWell with configuration.
+///
+/// Example:
+/// ```dart
+/// Text('Click').inkWell(onTap: () => print('InkWell tapped'));
+/// ```
+
+/// Wrap any widget in an InkWell with configuration.
+extension KaeruInkWellExtension on Widget {
+
+  /// Wraps the widget in an [InkWell].
+  Widget inkWell(
+    GestureTapCallback? onTap, {
+    GestureTapCallback? onDoubleTap,
+    GestureLongPressCallback? onLongPress,
+    ValueChanged<bool>? onHighlightChanged,
+    ValueChanged<bool>? onHover,
+    MouseCursor? mouseCursor,
+    Color? splashColor,
+    Color? highlightColor,
+    Color? hoverColor,
+    BorderRadius? borderRadius,
+    WidgetStateProperty<Color?>? overlayColor,
+    bool enableFeedback = true,
+    FocusNode? focusNode,
+    bool canRequestFocus = true,
+    void Function(bool)? onFocusChange,
+    void Function(TapDownDetails)? onTapDown,
+    void Function(TapUpDetails)? onTapUp,
+    void Function()? onTapCancel,
+    void Function()? onSecondaryTap,
+    void Function(TapUpDetails)? onSecondaryTapUp,
+    void Function(TapDownDetails)? onSecondaryTapDown,
+    void Function()? onSecondaryTapCancel,
+    Color? focusColor,
+    InteractiveInkFeatureFactory? splashFactory,
+    double? radius,
+    ShapeBorder? customBorder,
+    bool excludeFromSemantics = false,
+    bool autofocus = false,
+    WidgetStatesController? statesController,
+    Duration? hoverDuration,
+  })
+
+}
+
+--- File: lib/extensions/margin.dart ---
+
+/// Extension for shorthand margin helpers via VContainer.
+///
+/// Example:
+/// ```dart
+/// Text('Hi').m(8).make();
+/// ```
+
+/// Shorthand margin helpers via VContainer.
+extension KaeruMarginExtension on Widget {
+
+  /// Wraps the widget in a container with the specified [p] margin.
+  Widget mar(EdgeInsetsGeometry p)
+
+  /// Wraps the widget in a container with the specified margin.
+  Widget m(double v, [double? y])
+
+  /// Wraps the widget in a container with the specified horizontal [v] margin.
+  Widget mx(double v)
+
+  /// Wraps the widget in a container with the specified vertical [v] margin.
+  Widget my(double v)
+
+  /// Wraps the widget in a container with the specified top [v] margin.
+  Widget mt(double v)
+
+  /// Wraps the widget in a container with the specified bottom [v] margin.
+  Widget mb(double v)
+
+  /// Wraps the widget in a container with the specified left [v] margin.
+  Widget ml(double v)
+
+  /// Wraps the widget in a container with the specified right [v] margin.
+  Widget mr(double v)
+
+}
+
+--- File: lib/extensions/padding.dart ---
+
+/// Extension for shorthand padding on any widget.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').p(12).px(8);
+/// ```
+
+/// Shorthand padding on any widget.
+extension KaeruPaddingExtension on Widget {
+
+  /// Wraps the widget in a [Padding] with the specified [insets].
+  Widget pad(EdgeInsets insets)
+
+  /// Wraps the widget in a [Padding] with the specified padding.
+  Widget p(double v, [double? y])
+
+  /// Wraps the widget in a [Padding] with the specified horizontal [v] padding.
+  Widget px(double v)
+
+  /// Wraps the widget in a [Padding] with the specified vertical [v] padding.
+  Widget py(double v)
+
+  /// Wraps the widget in a [Padding] with the specified top [v] padding.
+  Widget pt(double v)
+
+  /// Wraps the widget in a [Padding] with the specified bottom [v] padding.
+  Widget pb(double v)
+
+  /// Wraps the widget in a [Padding] with the specified left [v] padding.
+  Widget pl(double v)
+
+  /// Wraps the widget in a [Padding] with the specified right [v] padding.
+  Widget pr(double v)
+
+}
+
+--- File: lib/extensions/positioned.dart ---
+
+/// Extension to wrap widget in Positioned within a Stack.
+///
+/// Example:
+/// ```dart
+/// Container().positioned(top: 0, left: 0);
+/// ```
+
+/// Wraps widget in Positioned within a Stack.
+extension KaeruPositionedX on Widget {
+
+  /// Wraps the built Container into a Positioned widget
+  Positioned positioned({
+    double? top,
+    double? left,
+    double? right,
+    double? bottom,
+    double? width,
+    double? height,
+  })
+
+  /// Fill entire Stack
+  Positioned get positionedFill
+
+  /// Positions the widget at the top left of the stack.
+  Positioned pTopLeft({double? top, double? left})
+
+  /// Positions the widget at the top right of the stack.
+  Positioned pTopRight({double? top, double? right})
+
+  /// Positions the widget at the bottom left of the stack.
+  Positioned pBottomLeft({double? bottom, double? left})
+
+  /// Positions the widget at the bottom right of the stack.
+  Positioned pBottomRight({double? bottom, double? right})
+
+}
+
+--- File: lib/extensions/responsive.dart ---
+
+/// Responsive helpers and grid system for Kaeru UI.
+///
+/// Example:
+/// ```dart
+/// context.isXs; // true if width < 400
+/// Text('Mobile view').xsOnly(context);
+/// GridRow(xs: 2, md: 4, children: [...]);
+/// ```
+
+/// Breakpoints for responsive design.
+class Breakpoints {
+
+  /// Extra small breakpoint.
+  static double xs = 400
+
+  /// Small breakpoint.
+  static double sm = 600
+
+  /// Medium breakpoint.
+  static double md = 1024
+
+  /// Large breakpoint.
+  static double lg = 1440
+
+}
+
+/// Responsive helpers on BuildContext.
+extension KaeruResponsiveHelpers on BuildContext {
+
+  /// The width of the screen.
+  double get width
+
+  /// The height of the screen.
+  double get height
+
+  /// Whether the screen width is extra small.
+  bool get isXs
+
+  /// Whether the screen width is small.
+  bool get isSm
+
+  /// Whether the screen width is medium.
+  bool get isMd
+
+  /// Whether the screen width is large.
+  bool get isLg
+
+  /// Whether the screen width is extra large.
+  bool get isXl
+
+  /// Whether the screen width is extra small.
+  bool get xsOnly
+
+  /// Whether the screen width is small.
+  bool get smOnly
+
+  /// Whether the screen width is medium.
+  bool get mdOnly
+
+  /// Whether the screen width is large.
+  bool get lgOnly
+
+  /// Whether the screen width is extra large.
+  bool get xlOnly
+
+  /// Whether the screen width is extra small or small.
+  bool get xsDown
+
+  /// Whether the screen width is small or medium.
+  bool get smDown
+
+  /// Whether the screen width is medium or large.
+  bool get mdDown
+
+  /// Whether the screen width is large or extra large.
+  bool get lgDown
+
+  /// Whether the screen width is small or larger.
+  bool get smUp
+
+  /// Whether the screen width is medium or larger.
+  bool get mdUp
+
+  /// Whether the screen width is large or larger.
+  bool get lgUp
+
+  /// Returns a value based on the current breakpoint.
+  T responsiveValue<T>({required T xs, T? sm, T? md, T? lg, T? xl})
+
+}
+
+/// Responsive widget visibility extensions.
+/// Example: `Text('Mobile only').xsOnly(context)`
+extension KaeruResponsiveWidget on Widget {
+
+  /// Shows the widget only on extra small screens.
+  Widget xsOnly(BuildContext context)
+
+  /// Shows the widget only on small screens.
+  Widget smOnly(BuildContext context)
+
+  /// Shows the widget only on medium screens.
+  Widget mdOnly(BuildContext context)
+
+  /// Shows the widget only on large screens.
+  Widget lgOnly(BuildContext context)
+
+  /// Shows the widget only on extra large screens.
+  Widget xlOnly(BuildContext context)
+
+  /// Shows the widget on extra small and small screens.
+  Widget xsDown(BuildContext context)
+
+  /// Shows the widget on small and medium screens.
+  Widget smDown(BuildContext context)
+
+  /// Shows the widget on medium and large screens.
+  Widget mdDown(BuildContext context)
+
+  /// Shows the widget on small screens and up.
+  Widget smUp(BuildContext context)
+
+  /// Shows the widget on medium screens and up.
+  Widget mdUp(BuildContext context)
+
+  /// Shows the widget on large screens and up.
+  Widget lgUp(BuildContext context)
+
+}
+
+/// Responsive grid row for Kaeru UI.
+/// Example:
+/// ```dart
+/// GridRow(xs: 2, md: 4, children: [...])
+/// ```
+class GridRow extends StatelessWidget {
+
+  /// The number of columns for extra small screens.
+  final int xs
+
+  /// The number of columns for small screens.
+  final int? sm
+
+  /// The number of columns for medium screens.
+  final int? md
+
+  /// The number of columns for large screens.
+  final int? lg
+
+  /// The number of columns for extra large screens.
+  final int? xl
+
+  /// The children of the grid row.
+  final List<Widget> children
+
+  /// The spacing between columns.
+  final double spacing
+
+  /// The spacing between rows.
+  final double runSpacing
+
+  /// Creates a [GridRow].
+  const GridRow({
+    super.key,
+    this.xs = 1,
+    this.sm,
+    this.md,
+    this.lg,
+    this.xl,
+    required this.children,
+    this.spacing = 8,
+    this.runSpacing = 8,
+  })
+
+}
+
+/// Responsive flex column for Kaeru UI.
+/// Example:
+/// ```dart
+/// FlexCol(xs: 12, md: 6, child: Container())
+/// ```
+class FlexCol extends StatelessWidget {
+
+  /// The number of columns for extra small screens.
+  final int xs
+
+  /// The number of columns for small screens.
+  final int? sm
+
+  /// The number of columns for medium screens.
+  final int? md
+
+  /// The number of columns for large screens.
+  final int? lg
+
+  /// The number of columns for extra large screens.
+  final int? xl
+
+  /// The child of the flex column.
+  final Widget child
+
+  /// The total number of columns.
+  static const int totalColumns = 12
+
+  /// Creates a [FlexCol].
+  const FlexCol({
+    super.key,
+    this.xs = 12,
+    this.sm,
+    this.md,
+    this.lg,
+    this.xl,
+    required this.child,
+  })
+
+}
+
+/// Responsive flex row for Kaeru UI.
+/// Example:
+/// ```dart
+/// FlexRow(children: [FlexCol(...), FlexCol(...)])
+/// ```
+class FlexRow extends StatelessWidget {
+
+  /// The children of the flex row.
+  final List<Widget> children
+
+  /// The spacing between columns.
+  final double spacing
+
+  /// The spacing between rows.
+  final double runSpacing
+
+  /// The cross axis alignment of the flex row.
+  final CrossAxisAlignment crossAxisAlignment
+
+  /// The main axis alignment of the flex row.
+  final MainAxisAlignment mainAxisAlignment
+
+  /// Creates a [FlexRow].
+  const FlexRow({
+    super.key,
+    required this.children,
+    this.spacing = 8,
+    this.runSpacing = 8,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  })
+
+}
+
+/// Extension to convert List<FlexCol> to FlexRow.
+extension KaeruFlexListColExt on List<FlexCol> {
+
+  /// Converts a list of [FlexCol] to a [FlexRow].
+  FlexRow toFlex({
+    Key? key,
+    double spacing = 8,
+    double runSpacing = 8,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  })
+
+}
+
+/// Extension to convert List<Widget> to FlexRow with columns.
+extension KaeruFlexListExt on List<Widget> {
+
+  /// Converts a list of widgets to a list of [FlexCol].
+  List<FlexCol> toFlexCol({
+    Key? key,
+    int xs = 12,
+    int? sm,
+    int? md,
+    int? lg,
+    int? xl,
+  })
+
+  /// Converts a list of widgets to a [FlexRow].
+  FlexRow toFlex({
+    int xs = 12,
+    int? sm,
+    int? md,
+    int? lg,
+    int? xl,
+
+    double spacing = 8,
+    double runSpacing = 8,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  })
+
+}
+
+--- File: lib/extensions/spacing.dart ---
+
+/// Numeric spacing shortcuts for SizedBox.
+///
+/// Example:
+/// ```dart
+/// 5.0.hSpace;
+/// 10.0.vSpace;
+/// ```
+
+/// Numeric spacing shortcuts for SizedBox.
+extension KaeruSpacing on num {
+
+  /// Creates a [SizedBox] with the given width.
+  Widget get hSpace
+
+  /// Creates a [SizedBox] with the given width.
+  Widget get widthBox
+
+  /// Creates a [SizedBox] with the given height.
+  Widget get vSpace
+
+  /// Creates a [SizedBox] with the given height.
+  Widget get heightBox
+
+}
+
+--- File: lib/extensions/stack.dart ---
+
+/// (Empty file) Stack extension placeholder for Kaeru UI.
+///
+/// Example:
+/// ```dart
+/// [Widget1, Widget2].stack();
+/// ```
+
+
+--- File: lib/extensions/text.dart ---
+
+/// Extension to bridge Text to VText for chainable styling.
+///
+/// Example:
+/// ```dart
+/// Text('Hello').text.color(Colors.red).size(18).make();
+/// ```
+
+/// Bridges Text to VText for chainable styling.
+extension KaeruTextExtension on Text {
+
+  /// Converts a [Text] widget to a [VText] widget for chainable styling.
+  VText get text
+
+}
+
+--- File: lib/extensions/theme.dart ---
+
+/// Extension for accessing theme data from [BuildContext].
+extension KaeruThemeExtension on BuildContext {
+
+  /// The same of [MediaQuery.of(context).size]
+  Size get mediaQuerySize
+
+  /// The current [ThemeData].
+  ThemeData get theme
+
+  /// Check if dark mode theme is enable
+  bool get isDarkMode
+
+  /// give access to Theme.of(context).iconTheme.color
+  Color? get iconColor
+
+  /// similar to [MediaQuery.of(context).padding]
+  TextTheme get textTheme
+
+  /// similar to [MediaQuery.of(context).padding]
+  EdgeInsets get mediaQueryPadding
+
+  /// similar to [MediaQuery.of(context).padding]
+  MediaQueryData get mediaQuery
+
+  /// similar to [MediaQuery.of(context).viewPadding]
+  EdgeInsets get mediaQueryViewPadding
+
+  /// similar to [MediaQuery.of(context).viewInsets]
+  EdgeInsets get mediaQueryViewInsets
+
+  /// similar to [MediaQuery.of(context).orientation]
+  Orientation get orientation
+
+  /// check if device is on landscape mode
+  bool get isLandscape
+
+  /// check if device is on portrait mode
+  bool get isPortrait
+
+  /// similar to [MediaQuery.of(this).devicePixelRatio]
+  double get devicePixelRatio
+
+  /// similar to [MediaQuery.of(this).textScaleFactor]
+  TextScaler get textScaler
+
+  /// get the shortestSide from screen
+  double get mediaQueryShortestSide
+
+  /// True if width be larger than 800
+  bool get showNavbar
+
+  /// Check if dark mode theme is enable
+  bool get isDark
+
+}
+
+--- File: lib/extensions/transform.dart ---
+
+/// Extension for chainable transforms on any widget.
+///
+/// Example:
+/// ```dart
+/// Icon(Icons.arrow_upward).rotate(pi / 4).translate(dx: 10);
+/// ```
+
+/// Chainable transforms on any widget.
+extension KaeruWidgetTransform on Widget {
+
+  /// Rotates the widget by [radians].
+  Widget rotate(double radians)
+
+  /// Flips the widget horizontally.
+  Widget get flipX
+
+  /// Flips the widget vertically.
+  Widget get flipY
+
+  /// Translates the widget by [dx] and [dy].
+  Widget translate({double dx = 0, double dy = 0})
+
+}
+
+--- File: lib/extensions/visibility.dart ---
+
+/// Extension for chainable visibility on any widget.
+///
+/// Example:
+/// ```dart
+/// widget.visible(isActive, replacement: Text('Off'));
+/// widget.hide;
+/// ```
+
+/// Chainable visibility on any widget.
+extension KaeruVisibilityExtension on Widget {
+
+  /// Makes the widget visible or invisible based on the [visible] parameter.
+  ///
+  /// If [visible] is false, the [replacement] widget is shown instead.
+  /// Defaults to an empty [SizedBox].
+  Widget visible(bool visible, {Widget replacement = const SizedBox.shrink()})
+
+  /// Hides the widget.
+  Widget get hide
+
+}
+
+--- File: lib/extensions/generic/color.dart ---
+
+/// Color extensions for Kaeru UI.
+///
+/// Chainable color channel setters, opacity, and semantic palette.
+///
+/// Example:
+/// ```dart
+/// Colors.blue.sa(200).o(0.5).secondary;
+/// ```
+
+/// Chainable color channel and opacity setters.
+extension KaeruColorOpacity on Color {
+
+  /// Sets the red channel.
+  ///
+  /// Example:
+  /// ```dart
+  /// Colors.blue.sr(128);
+  /// ```
+  Color sr(int v)
+
+  /// Sets the green channel.
+  ///
+  /// Example:
+  /// ```dart
+  /// Colors.blue.sg(128);
+  /// ```
+  Color sg(int v)
+
+  /// Sets the blue channel.
+  ///
+  /// Example:
+  /// ```dart
+  /// Colors.blue.sb(128);
+  /// ```
+  Color sb(int v)
+
+  /// Sets the alpha channel.
+  ///
+  /// Example:
+  /// ```dart
+  /// Colors.blue.sa(200);
+  /// ```
+  Color sa(int opacity)
+
+  /// Sets the overall opacity.
+  ///
+  /// Example:
+  /// ```dart
+  /// Colors.blue.o(0.5);
+  /// ```
+  Color o(double opacity)
+
+}
+
+/// Predefined color palette for Kaeru UI.
+class ColorPalette {
+
+  /// Primary / Brand color.
+  /// Example: `ColorPalette.primary`
+  static Color primary = const Color(0xFF1E88E5)
+
+  /// Secondary color.
+  /// Example: `ColorPalette.secondary`
+  static Color secondary = const Color(0xFF42A5F5)
+
+  /// Success color.
+  /// Example: `ColorPalette.success`
+  static Color success = const Color(0xFF4CAF50)
+
+  /// Info color.
+  /// Example: `ColorPalette.info`
+  static Color info = const Color(0xFF2196F3)
+
+  /// Warning color.
+  /// Example: `ColorPalette.warning`
+  static Color warning = const Color(0xFFFFC107)
+
+  /// Danger color.
+  /// Example: `ColorPalette.danger`
+  static Color danger = const Color(0xFFF44336)
+
+  /// Light neutral color.
+  /// Example: `ColorPalette.light`
+  static Color light = const Color(0xFFF5F5F5)
+
+  /// Medium neutral color.
+  /// Example: `ColorPalette.medium`
+  static Color medium = const Color(0xFF9E9E9E)
+
+  /// Dark neutral color.
+  /// Example: `ColorPalette.dark`
+  static Color dark = const Color(0xFF212121)
+
+}
+
+/// Semantic color access for Kaeru UI.
+/// Example: `color.primary`, `color.success`
+extension KaeruSemanticColor on Color {
+
+  /// Returns the primary color.
+  /// Example: `color.primary`
+  Color get primary
+
+  /// Returns the secondary color.
+  /// Example: `color.secondary`
+  Color get secondary
+
+  /// Returns the success color.
+  /// Example: `color.success`
+  Color get success
+
+  /// Returns the info color.
+  /// Example: `color.info`
+  Color get info
+
+  /// Returns the warning color.
+  /// Example: `color.warning`
+  Color get warning
+
+  /// Returns the danger color.
+  /// Example: `color.danger`
+  Color get danger
+
+  /// Returns the light color.
+  /// Example: `color.light`
+  Color get light
+
+  /// Returns the medium color.
+  /// Example: `color.medium`
+  Color get medium
+
+  /// Returns the dark color.
+  /// Example: `color.dark`
+  Color get dark
+
+}
+
+--- File: lib/extensions/generic/edge_insets.dart ---
+
+/// Extension to merge two EdgeInsets.
+///
+/// Example:
+/// ```dart
+/// const EdgeInsets.all(8).merge(const EdgeInsets.symmetric(horizontal: 4));
+/// ```
+
+/// Merges two EdgeInsets by adding their values.
+extension KaeruEdgeInsetsExtension on EdgeInsets {
+
+  /// Merge two EdgeInsets by adding their values.
+  ///
+  /// Example:
+  /// ```dart
+  /// EdgeInsets.all(8).merge(EdgeInsets.symmetric(horizontal: 4));
+  /// ```
+  EdgeInsets merge(EdgeInsets other)
+
+}
+
+--- File: lib/extensions/generic/future.dart ---
+
+/// Extension for concise `FutureBuilder` usage with customizable states.
+///
+/// This extension simplifies handling different states of a `Future<T>`:
+/// - **success**: when the future completes with data
+/// - **error**: when the future completes with an error
+/// - **loading**: while waiting for the future to complete
+/// - **noData**: when the future completes with no data
+///
+/// Example:
+/// ```dart
+/// myFuture.futureBuilder(
+///   success: (ctx, data) => Text('Result: $data'),
+///   error: (ctx, err) => Text('Error: $err'),
+///   loading: (ctx) => const CircularProgressIndicator(),
+///   noData: (ctx) => const Text('No result'),
+/// );
+/// ```
+extension KaeruFutureBuilder<T> on Future<T> {
+
+  /// Builds a `FutureBuilder` with shorthand callbacks for common states.
+  ///
+  /// [success] → required, called when the future resolves with data.
+  /// [error] → optional, called when the future throws. Defaults to a `Text` with the error message.
+  /// [loading] → optional, called while waiting for the future. Defaults to an empty box.
+  /// [noData] → optional, called if the future completes without data. Defaults to an empty box.
+  ///
+  /// Example:
+  /// ```dart
+  /// myFuture.futureBuilder(
+  ///   success: (ctx, data) => Text('Result: $data'),
+  ///   error: (ctx, err) => Text('Error: $err'),
+  ///   loading: (ctx) => const CircularProgressIndicator(),
+  ///   noData: (ctx) => const Text('No result'),
+  /// );
+  /// ```
+  Widget futureBuilder({
+    required Widget Function(BuildContext, T data) success,
+    Widget Function(BuildContext, Object? error)? error,
+    Widget Function(BuildContext)? loading,
+    Widget Function(BuildContext)? noData,
+  })
+
+}
+
+--- File: lib/extensions/generic/int.dart ---
+
+/// Extension to convert int hex to Color.
+///
+/// Example:
+/// ```dart
+/// 0xFF112233.color   // Color(0xFF112233)
+/// ```
+
+/// Converts int to Color.
+extension KaeruColorInt on int {
+
+  /// Converts int hex like 0xFF112233 to Color.
+  ///
+  /// Example:
+  /// ```dart
+  /// 0xFF112233.color; // Color(0xFF112233)
+  /// ```
+  Color get color
+
+}
+
+--- File: lib/extensions/generic/num.dart ---
+
+/// Numeric extensions for Kaeru UI.
+///
+/// Provides percent-based sizing, EdgeInsets shorthands, Duration shorthands, and number formatting.
+///
+/// Example:
+/// ```dart
+/// 20.w(context)        // 20% of screen width
+/// 8.p                  // EdgeInsets.all(8)
+/// 5.seconds            // Duration(seconds: 5)
+/// 3.14159.toFixed(2)   // "3.14"
+/// ```
+
+/// Numeric extensions for Kaeru UI.
+extension KaeruNumExtension on num {
+
+  /// Returns [this]% of screen width.
+  ///
+  /// Example:
+  /// ```dart
+  /// 20.w(context); // 20% of screen width
+  /// ```
+  double w(BuildContext context)
+
+  /// Returns [this]% of screen height.
+  ///
+  /// Example:
+  /// ```dart
+  /// 30.h(context); // 30% of screen height
+  /// ```
+  double h(BuildContext context)
+
+  /// Returns [this]% of screen width for font size.
+  ///
+  /// Example:
+  /// ```dart
+  /// 5.sp(context); // 5% of screen width as font size
+  /// ```
+  double sp(BuildContext context)
+
+  /// Horizontal padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.px; // EdgeInsets.symmetric(horizontal: 8)
+  /// ```
+  EdgeInsets get px
+
+  /// Vertical padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.py; // EdgeInsets.symmetric(vertical: 8)
+  /// ```
+  EdgeInsets get py
+
+  /// All sides padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.p; // EdgeInsets.all(8)
+  /// ```
+  EdgeInsets get p
+
+  /// All sides margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.m; // EdgeInsets.all(8)
+  /// ```
+  EdgeInsets get m
+
+  /// Top padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.pt; // EdgeInsets.only(top: 8)
+  /// ```
+  EdgeInsets get pt
+
+  /// Bottom padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.pb; // EdgeInsets.only(bottom: 8)
+  /// ```
+  EdgeInsets get pb
+
+  /// Left padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.pl; // EdgeInsets.only(left: 8)
+  /// ```
+  EdgeInsets get pl
+
+  /// Right padding EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.pr; // EdgeInsets.only(right: 8)
+  /// ```
+  EdgeInsets get pr
+
+  /// Horizontal margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.mx; // EdgeInsets.symmetric(horizontal: 8)
+  /// ```
+  EdgeInsets get mx
+
+  /// Vertical margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.my; // EdgeInsets.symmetric(vertical: 8)
+  /// ```
+  EdgeInsets get my
+
+  /// Top margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.mt; // EdgeInsets.only(top: 8)
+  /// ```
+  EdgeInsets get mt
+
+  /// Bottom margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.mb; // EdgeInsets.only(bottom: 8)
+  /// ```
+  EdgeInsets get mb
+
+  /// Left margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.ml; // EdgeInsets.only(left: 8)
+  /// ```
+  EdgeInsets get ml
+
+  /// Right margin EdgeInsets.
+  ///
+  /// Example:
+  /// ```dart
+  /// 8.mr; // EdgeInsets.only(right: 8)
+  /// ```
+  EdgeInsets get mr
+
+  /// Returns a [Duration] in seconds.
+  ///
+  /// Example:
+  /// ```dart
+  /// 5.seconds; // Duration(seconds: 5)
+  /// ```
+  Duration get seconds
+
+  /// Returns a [Duration] in milliseconds.
+  ///
+  /// Example:
+  /// ```dart
+  /// 500.milliseconds; // Duration(milliseconds: 500)
+  /// ```
+  Duration get milliseconds
+
+  /// Returns a [Duration] in minutes.
+  ///
+  /// Example:
+  /// ```dart
+  /// 2.minutes; // Duration(minutes: 2)
+  /// ```
+  Duration get minutes
+
+  /// Returns a [Duration] in hours.
+  ///
+  /// Example:
+  /// ```dart
+  /// 1.hours; // Duration(hours: 1)
+  /// ```
+  Duration get hours
+
+  /// Formats the number to a fixed number of decimal places.
+  ///
+  /// Example:
+  /// ```dart
+  /// 3.14159.toFixed(2); // "3.14"
+  /// ```
+  String toFixed(int fractionDigits)
+
+}
+
+--- File: lib/extensions/generic/stream.dart ---
+
+/// Extension for concise `StreamBuilder` usage with customizable states.
+///
+/// This extension allows you to easily attach UI logic for different stream states:
+/// - **success**: when new data is emitted
+/// - **error**: when an error occurs
+/// - **loading**: while waiting for the first value
+/// - **noData**: when the stream completes without emitting data
+///
+/// Example:
+/// ```dart
+/// myStream.streamBuilder(
+///   success: (ctx, data) => Text('Data: $data'),
+///   error: (ctx, err) => Text('Error: $err'),
+///   loading: (ctx) => const CircularProgressIndicator(),
+///   noData: (ctx) => const Text('No data available'),
+/// );
+/// ```
+extension KaeruStreamBuilder<T> on Stream<T> {
+
+  /// Builds a `StreamBuilder` with shorthand callbacks for common states.
+  ///
+  /// [success] → required, called when the stream has data.
+  /// [error] → optional, called when the stream has an error. Defaults to a `Text` with the error message.
+  /// [loading] → optional, called when the stream is waiting. Defaults to an empty box.
+  /// [noData] → optional, called when the stream has no data and no error. Defaults to an empty box.
+  /// Example:
+  /// ```dart
+  /// myStream.streamBuilder(
+  ///   success: (ctx, data) => Text('Data: $data'),
+  ///   error: (ctx, err) => Text('Error: $err'),
+  ///   loading: (ctx) => const CircularProgressIndicator(),
+  ///   noData: (ctx) => const Text('No data available'),
+  /// );
+  /// ```
+  Widget streamBuilder({
+    required Widget Function(BuildContext, T data) success,
+    Widget Function(BuildContext, Object? error)? error,
+    Widget Function(BuildContext)? loading,
+    Widget Function(BuildContext)? noData,
+  })
+
+}
+
+--- File: lib/extensions/generic/string.dart ---
+
+/// String extension methods for Kaeru UI.
+///
+/// Provides case conversions, parsing, email validation, and chainable text builder.
+///
+/// Example:
+/// ```dart
+/// 'hello_world'.camelCase; // "helloWorld"
+/// '3.14'.toDouble;         // 3.14
+/// 'user@example.com'.isEmail; // true
+/// 'Hello'.text.lg.red(600).make();
+/// ```
+
+/// String case conversion extensions.
+extension KaeruStringCaseExt on String {
+
+  /// Capitalizes the first letter of the string.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'hello'.capitalize; // 'Hello'
+  /// ```
+  String get capitalize
+
+  /// Converts the string to title case.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'hello world'.titleCase; // 'Hello World'
+  /// ```
+  String get titleCase
+
+  /// Converts the string to camelCase.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'hello_world case'.camelCase; // 'helloWorldCase'
+  /// ```
+  String get camelCase
+
+  /// Converts the string to snake_case.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'Hello World__X'.snakeCase; // 'hello_world_x'
+  /// ```
+  String get snakeCase
+
+}
+
+/// Chainable parsing and text builder for String.
+///
+/// Example:
+/// ```dart
+/// 'Hi'.text.lg.make();
+/// 'a@b.com'.isEmail; // true
+/// '42'.toInt; // 42
+/// ```
+extension KaeruStringParsingExt on String {
+
+  /// Converts the string to a [VText] builder for chainable text styling.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'Hello'.text.lg.red(600).make();
+  /// ```
+  VText get text
+
+  /// Checks if the string is a valid email address.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'a@b.com'.isEmail; // true
+  /// 'not-an-email'.isEmail; // false
+  /// ```
+  bool get isEmail
+
+  /// Parses the string as an integer, or returns null if invalid.
+  ///
+  /// Example:
+  /// ```dart
+  /// '42'.toInt; // 42
+  /// 'abc'.toInt; // null
+  /// ```
+  int? get toInt
+
+  /// Parses the string as a double, or returns null if invalid.
+  ///
+  /// Example:
+  /// ```dart
+  /// '3.14'.toDouble; // 3.14
+  /// 'abc'.toDouble; // null
+  /// ```
+  double? get toDouble
+
+}
+
+--- File: lib/extensions/generic/string_avatar.dart ---
+
+/// Extension to treat String as image URL and build a CircleAvatar.
+///
+/// Example:
+/// ```dart
+/// 'https://example.com/a.png'.avatar(radius: 24, backgroundColor: Colors.blueGrey);
+/// ```
+
+/// Extension to treat String as image URL and build a CircleAvatar.
+extension KaeruAvatar on String {
+
+  /// Builds a CircleAvatar from a string URL.
+  ///
+  /// Example:
+  /// ```dart
+  /// 'https://...'.avatar(radius: 32)
+  /// ```
+  Widget avatar({double radius = 20, Color? backgroundColor})
+
+}
+
+--- File: lib/extensions/generic/list/flex.dart ---
+
+/// Extension to build Row/Column from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('A'), Text('B'), Text('C')].hStack(mainAxisAlignment: MainAxisAlignment.spaceBetween);
+/// [Text('A'), Text('B'), Text('C')].vStack();
+/// ```
+
+/// Builds Row/Column from List<Widget>.
+extension KaeruFlexExtension on List<Widget> {
+
+  /// Creates a [Row] with the given widgets.
+  Widget hStack({
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+  /// Creates a [Row] with the given widgets.
+  Widget row({
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+  /// Creates a [Column] with the given widgets.
+  Widget vStack({
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+  /// Creates a [Column] with the given widgets.
+  Widget column({
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+}
+
+--- File: lib/extensions/generic/list/flex_gap.dart ---
+
+/// Extension to build Row/Column with gaps from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('1'), Text('2'), Text('3')].hStackWithGap(gap: 8);
+/// [Text('A'), Text('B'), Text('C')].vStackWithGap(gap: 12);
+/// ```
+
+/// Builds Row/Column with gaps from List<Widget>.
+extension KaeruFlexGapExtension on List<Widget> {
+
+  /// Creates a [Row] with the given widgets and a [gap] between them.
+  Widget hStackWithGap({
+    double gap = 0,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+  /// Creates a [Column] with the given widgets and a [gap] between them.
+  Widget vStackWithGap({
+    double gap = 0,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+    MainAxisSize mainAxisSize = MainAxisSize.max,
+  })
+
+}
+
+--- File: lib/extensions/generic/list/stack.dart ---
+
+/// Extension to build a Stack widget from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Container(color: Colors.red), Text("On top")].stack(alignment: Alignment.center)
+/// ```
+
+/// Builds a Stack widget from List<Widget>.
+extension KaeruStackListExt on List<Widget> {
+
+  /// Creates a [Stack] with the given widgets.
+  ///
+  /// Example:
+  /// ```dart
+  /// [
+  ///   Container(color: Colors.red, width: 100, height: 100),
+  ///   Text("On top"),
+  /// ].stack(alignment: Alignment.center)
+  /// ```
+  Widget stack({
+    Key? key,
+    AlignmentGeometry alignment = AlignmentDirectional.topStart,
+    TextDirection? textDirection,
+    StackFit fit = StackFit.loose,
+    Clip clipBehavior = Clip.hardEdge,
+  })
+
+}
+
+--- File: lib/extensions/generic/list/wrap.dart ---
+
+/// Extension to build a Wrap widget from List<Widget>.
+///
+/// Example:
+/// ```dart
+/// [Text('A'), Text('B'), Text('C')].wrap(spacing: 4, runSpacing: 8);
+/// ```
+
+/// Builds a Wrap widget from List<Widget>.
+extension KaeruWrapExtension on List<Widget> {
+
+  /// Creates a [Wrap] with the given widgets.
+  Widget wrap({
+    double spacing = 0,
+    double runSpacing = 0,
+    WrapAlignment alignment = WrapAlignment.start,
+    WrapAlignment runAlignment = WrapAlignment.start,
+    WrapCrossAlignment crossAxisAlignment = WrapCrossAlignment.start,
+    TextDirection? textDirection,
+    VerticalDirection verticalDirection = VerticalDirection.down,
+  })
+
+}
+
+--- File: lib/virtual/v_container.dart ---
+
+/// A chainable container builder for Flutter widgets.
+class VContainer {
+
+  /// The child widget.
+  final Widget? child
+
+  /// The alignment of the container.
+  final Alignment? alignment
+
+  /// The padding inside the container.
+  final EdgeInsetsGeometry? padding
+
+  /// The margin outside the container.
+  final EdgeInsetsGeometry? margin
+
+  /// The decoration of the container.
+  final BoxDecoration? decoration
+
+  /// Creates a [VContainer] with optional parameters.
+  const VContainer({
+    this.child,
+    this.alignment,
+    this.padding,
+    this.margin,
+    double? width,
+    double? height,
+    this.decoration,
+  })
+
+  /// Sets the child widget.
+  VContainer childWidget(Widget child)
+
+  /// Applies rounded corners with [radius].
+  VContainer rounded([double radius = 8])
+
+  /// Sets the background color.
+  VContainer bg(Color color)
+
+  /// Adds a box shadow to the container.
+  VContainer shadow({
+    Color color = Colors.black26,
+    double blur = 4,
+    Offset offset = const Offset(2, 2),
+    double spread = 0,
+  })
+
+  /// Sets the width of the container.
+  VContainer width(double w)
+
+  /// Sets the height of the container.
+  VContainer height(double h)
+
+  /// Sets both width and height of the container.
+  VContainer size(double w, double h)
+
+  /// Sets the alignment of the container.
+  VContainer align(Alignment a)
+
+  /// Aligns the container to the center.
+  VContainer get alignCenter
+
+  /// Aligns the container to the top left.
+  VContainer get alignTopLeft
+
+  /// Aligns the container to the top right.
+  VContainer get alignTopRight
+
+  /// Aligns the container to the bottom left.
+  VContainer get alignBottomLeft
+
+  /// Aligns the container to the bottom right.
+  VContainer get alignBottomRight
+
+  /// Sets the margin.
+  VContainer mar(EdgeInsetsGeometry p)
+
+  /// Sets all margins ([v]) or horizontal ([v]) and vertical ([y]) margins.
+  VContainer m(double v, [double? y])
+
+  /// Sets horizontal margin.
+  VContainer mx(double v)
+
+  /// Sets vertical margin.
+  VContainer my(double v)
+
+  /// Sets top margin.
+  VContainer mt(double v)
+
+  /// Sets bottom margin.
+  VContainer mb(double v)
+
+  /// Sets left margin.
+  VContainer ml(double v)
+
+  /// Sets right margin.
+  VContainer mr(double v)
+
+  /// Sets the padding.
+  VContainer pad(EdgeInsetsGeometry p)
+
+  /// Sets all paddings ([v]) or horizontal ([v]) and vertical ([y]) paddings.
+  VContainer p(double v, [double? y])
+
+  /// Sets horizontal padding.
+  VContainer px(double v)
+
+  /// Sets vertical padding.
+  VContainer py(double v)
+
+  /// Sets top padding.
+  VContainer pt(double v)
+
+  /// Sets bottom padding.
+  VContainer pb(double v)
+
+  /// Sets left padding.
+  VContainer pl(double v)
+
+  /// Sets right padding.
+  VContainer pr(double v)
+
+  /// Internal: returns a copy with new padding.
+  VContainer _copyWithPadding(EdgeInsetsGeometry p)
+
+  /// Internal: returns a copy with new margin.
+  VContainer _copyWithMargin(EdgeInsetsGeometry m)
+
+  /// Sets a linear gradient background.
+  VContainer linearGradientBg({
+    required List<Color> colors,
+    AlignmentGeometry begin = Alignment.centerLeft,
+    AlignmentGeometry end = Alignment.centerRight,
+    List<double>? stops,
+    TileMode tileMode = TileMode.clamp,
+    GradientTransform? transform,
+  })
+
+  /// Sets a radial gradient background.
+  VContainer radialGradientBg({
+    required List<Color> colors,
+    AlignmentGeometry center = Alignment.center,
+    double radius = 0.5,
+  })
+
+  /// Adds a border to the container.
+  VContainer border({Color color = Colors.black, double width = 1})
+
+  /// Makes the container a circle.
+  VContainer circle()
+
+  /// Sets the opacity of the container's child.
+  VContainer opacity(double value)
+
+  /// Builds the Flutter [Container] widget.
+  Container make()
+
+}
+
+--- File: lib/virtual/v_rich_text.dart ---
+
+/// A chainable rich text builder for Flutter.
+class VRichText {
+
+  /// The list of inline spans.
+  final List<InlineSpan> _children
+
+  /// Creates a [VRichText] with optional parameters.
+  const VRichText(
+    this._children, {
+    TextAlign? align,
+    TextDirection? textDirection,
+    TextOverflow? overflow,
+    int? maxLines,
+    TextHeightBehavior? textHeightBehavior,
+  })
+
+  /// Applies bold style to all spans.
+  VRichText get bold
+
+  /// Applies italic style to all spans.
+  VRichText get italic
+
+  /// Sets color for all spans.
+  VRichText color(Color c)
+
+  /// Sets font size for all spans.
+  VRichText size(double s)
+
+  /// Sets letter spacing for all spans.
+  VRichText spacing(double v)
+
+  /// Underline decoration for all spans.
+  VRichText get underline
+
+  /// Line through decoration for all spans.
+  VRichText get lineThrough
+
+  /// Internal: applies a style transform to all spans.
+  VRichText _applyStyleToAll(TextStyle Function(TextStyle) transform)
+
+  /// Sets text alignment.
+  VRichText align(TextAlign a)
+
+  /// Sets text direction.
+  VRichText textDirection(TextDirection dir)
+
+  /// Sets max lines.
+  VRichText maxLines(int n)
+
+  /// Clips overflow.
+  VRichText get overflowClip
+
+  /// Builds the Flutter [RichText] widget.
+  RichText make()
+
+}
+
+/// Extension to convert [String] to [VRichText].
+extension KaeruRichTextExtension on String {
+
+  /// Converts a string to [VRichText].
+  VRichText get richText
+
+}
+
+--- File: lib/virtual/v_text.dart ---
+
+/// A chainable text builder for Flutter.
+class VText {
+
+  /// The text data.
+  final String? data
+
+  /// The strut style.
+  final StrutStyle? strutStyle
+
+  /// The text direction.
+  final TextDirection? textDirection
+
+  /// The locale.
+  final Locale? locale
+
+  /// Whether the text should wrap.
+  final bool? softWrap
+
+  /// The semantics label.
+  final String? semanticsLabel
+
+  /// The semantics identifier.
+  final String? semanticsIdentifier
+
+  /// The text width basis.
+  final TextWidthBasis? textWidthBasis
+
+  /// The text height behavior.
+  final TextHeightBehavior? textHeightBehavior
+
+  /// The selection color.
+  final Color? selectionColor
+
+  /// Creates a [VText] with optional parameters.
+  const VText(
+    this.data, {
+    TextStyle? style,
+    TextAlign? align,
+    int? maxLines,
+    TextOverflow? overflow,
+    TextScaler? textScaler,
+    this.strutStyle,
+    this.textDirection,
+    this.locale,
+    this.softWrap,
+    this.semanticsLabel,
+    this.semanticsIdentifier,
+    this.textWidthBasis,
+    this.textHeightBehavior,
+    this.selectionColor,
+  })
+
+  /// Returns a copy with merged [style].
+  VText copyWithStyle(TextStyle style)
+
+  /// Sets the text color.
+  VText color(Color c)
+
+  /// Sets the font size.
+  VText size(double s)
+
+  /// Sets letter spacing.
+  VText spacing(double v)
+
+  /// Sets word spacing.
+  VText wordSpacing(double v)
+
+  /// Sets font weight.
+  VText weight(FontWeight w)
+
+  /// Adds a shadow to the text.
+  VText shadow({
+    Color color = Colors.black26,
+    double blur = 2,
+    Offset offset = const Offset(1, 1),
+  })
+
+  /// Sets background color.
+  VText bg(Color c)
+
+  /// Thin font weight.
+  VText get thin
+
+  /// Light font weight.
+  VText get light
+
+  /// Normal font weight.
+  VText get normal
+
+  /// Medium font weight.
+  VText get medium
+
+  /// Semibold font weight.
+  VText get semibold
+
+  /// Bold font weight.
+  VText get bold
+
+  /// Extra bold font weight.
+  VText get extrabold
+
+  /// Black font weight.
+  VText get black
+
+  /// Italic font style.
+  VText get italic
+
+  /// Underline decoration.
+  VText get underline
+
+  /// Line through decoration.
+  VText get lineThrough
+
+  /// Overline decoration.
+  VText get overline
+
+  /// Sets text alignment.
+  VText align(TextAlign a)
+
+  /// Center alignment.
+  VText get center
+
+  /// Right alignment.
+  VText get right
+
+  /// Left alignment.
+  VText get left
+
+  /// Justify alignment.
+  VText get justify
+
+  /// Sets max lines.
+  VText maxLines(int n)
+
+  /// Clips overflow.
+  VText get overflowClip
+
+  /// Ellipsis overflow.
+  VText get overflowEllipsis
+
+  /// Fade overflow.
+  VText get overflowFade
+
+  /// Scales the text.
+  VText scale(double factor)
+
+  /// Transforms text to uppercase.
+  VText get uppercase
+
+  /// Transforms text to lowercase.
+  VText get lowercase
+
+  /// Capitalizes the first letter.
+  VText get capitalize
+
+  /// Extra small font size.
+  VText get xs
+
+  /// Small font size.
+  VText get sm
+
+  /// Base font size.
+  VText get base
+
+  /// Large font size.
+  VText get lg
+
+  /// Extra large font size.
+  VText get xl
+
+  /// 2x extra large font size.
+  VText get xl2
+
+  /// 3x extra large font size.
+  VText get xl3
+
+  /// 4x extra large font size.
+  VText get xl4
+
+  /// 5x extra large font size.
+  VText get xl5
+
+  /// 6x extra large font size.
+  VText get xl6
+
+  /// Sets opacity for text color.
+  VText opacity(double o)
+
+  /// 25% opacity.
+  VText get opacity25
+
+  /// 50% opacity.
+  VText get opacity50
+
+  /// 75% opacity.
+  VText get opacity75
+
+  /// 100% opacity.
+  VText get opacity100
+
+  /// Tight letter spacing.
+  VText get tight
+
+  /// Wide letter spacing.
+  VText get wide
+
+  /// Red color shortcut.
+  VText red(int shade)
+
+  /// Blue color shortcut.
+  VText blue(int shade)
+
+  /// Green color shortcut.
+  VText green(int shade)
+
+  /// Gray color shortcut.
+  VText gray(int shade)
+
+  /// White color shortcut.
+  VText get white
+
+  /// Black color shortcut.
+  VText get blackColor
+
+  /// Sets line height.
+  VText lineHeight(double h)
+
+  /// Tight line height.
+  VText get lhTight
+
+  /// Normal line height.
+  VText get lhNormal
+
+  /// Relaxed line height.
+  VText get lhRelaxed
+
+  /// Loose line height.
+  VText get lhLoose
+
+  /// Builds the Flutter [Text] widget.
+  Text make()
+
+}

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// Wrap any widget in an InkWell with configuration.
 extension KaeruInkWellExtension on Widget {
+  /// Wraps the widget in an [InkWell].
   Widget inkWell(
     GestureTapCallback? onTap, {
     GestureTapCallback? onDoubleTap,

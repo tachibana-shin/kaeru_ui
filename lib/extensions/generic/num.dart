@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 
+/// Numeric extensions for Kaeru UI.
 extension KaeruNumExtension on num {
   /// Returns [this]% of screen width.
   ///

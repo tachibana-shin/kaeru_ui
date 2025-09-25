@@ -11,40 +11,65 @@ import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/clip.dart';
 import 'package:kaeru_ui/extensions/generic/list/wrap.dart';
 
+/// Breakpoints for responsive design.
 class Breakpoints {
+  /// Extra small breakpoint.
   static double xs = 400; // extra small
+  /// Small breakpoint.
   static double sm = 600; // small devices
+  /// Medium breakpoint.
   static double md = 1024; // medium devices
+  /// Large breakpoint.
   static double lg = 1440; // large devices
 }
 
 /// Responsive helpers on BuildContext.
 extension KaeruResponsiveHelpers on BuildContext {
+  /// The width of the screen.
   double get width => MediaQuery.of(this).size.width;
+  /// The height of the screen.
   double get height => MediaQuery.of(this).size.height;
 
+  /// Whether the screen width is extra small.
   bool get isXs => width < Breakpoints.xs;
+  /// Whether the screen width is small.
   bool get isSm => width >= Breakpoints.xs && width < Breakpoints.sm;
+  /// Whether the screen width is medium.
   bool get isMd => width >= Breakpoints.sm && width < Breakpoints.md;
+  /// Whether the screen width is large.
   bool get isLg => width >= Breakpoints.md && width < Breakpoints.lg;
+  /// Whether the screen width is extra large.
   bool get isXl => width >= Breakpoints.lg;
 
   /// Shortcuts
+  /// Whether the screen width is extra small.
   bool get xsOnly => isXs;
+  /// Whether the screen width is small.
   bool get smOnly => isSm;
+  /// Whether the screen width is medium.
   bool get mdOnly => isMd;
+  /// Whether the screen width is large.
   bool get lgOnly => isLg;
+  /// Whether the screen width is extra large.
   bool get xlOnly => isXl;
 
+  /// Whether the screen width is extra small or small.
   bool get xsDown => isXs || isSm;
+  /// Whether the screen width is small or medium.
   bool get smDown => isSm || isMd;
+  /// Whether the screen width is medium or large.
   bool get mdDown => isMd || isLg;
+  /// Whether the screen width is large or extra large.
   bool get lgDown => isLg || isXl;
 
+  /// Whether the screen width is small or larger.
   bool get smUp => isSm || isMd || isLg || isXl;
+  /// Whether the screen width is medium or larger.
   bool get mdUp => isMd || isLg || isXl;
+  /// Whether the screen width is large or larger.
   bool get lgUp => isLg || isXl;
 
+  /// Returns a value based on the current breakpoint.
   T responsiveValue<T>({required T xs, T? sm, T? md, T? lg, T? xl}) {
     if (isXs) return xs;
     if (isSm) return sm ?? xs;
@@ -59,37 +84,48 @@ extension KaeruResponsiveHelpers on BuildContext {
 /// Example: `Text('Mobile only').xsOnly(context)`
 extension KaeruResponsiveWidget on Widget {
   /// Only show on specific breakpoints
+  /// Shows the widget only on extra small screens.
   Widget xsOnly(BuildContext context) =>
       context.xsOnly ? this : const SizedBox.shrink();
 
+  /// Shows the widget only on small screens.
   Widget smOnly(BuildContext context) =>
       context.smOnly ? this : const SizedBox.shrink();
 
+  /// Shows the widget only on medium screens.
   Widget mdOnly(BuildContext context) =>
       context.mdOnly ? this : const SizedBox.shrink();
 
+  /// Shows the widget only on large screens.
   Widget lgOnly(BuildContext context) =>
       context.lgOnly ? this : const SizedBox.shrink();
 
+  /// Shows the widget only on extra large screens.
   Widget xlOnly(BuildContext context) =>
       context.xlOnly ? this : const SizedBox.shrink();
 
   /// Chainable visibility: xsDown, smUp, mdDown...
+  /// Shows the widget on extra small and small screens.
   Widget xsDown(BuildContext context) =>
       context.xsDown ? this : const SizedBox.shrink();
 
+  /// Shows the widget on small and medium screens.
   Widget smDown(BuildContext context) =>
       context.smDown ? this : const SizedBox.shrink();
 
+  /// Shows the widget on medium and large screens.
   Widget mdDown(BuildContext context) =>
       context.mdDown ? this : const SizedBox.shrink();
 
+  /// Shows the widget on small screens and up.
   Widget smUp(BuildContext context) =>
       context.smUp ? this : const SizedBox.shrink();
 
+  /// Shows the widget on medium screens and up.
   Widget mdUp(BuildContext context) =>
       context.mdUp ? this : const SizedBox.shrink();
 
+  /// Shows the widget on large screens and up.
   Widget lgUp(BuildContext context) =>
       context.lgUp ? this : const SizedBox.shrink();
 }
@@ -100,15 +136,24 @@ extension KaeruResponsiveWidget on Widget {
 /// GridRow(xs: 2, md: 4, children: [...])
 /// ```
 class GridRow extends StatelessWidget {
+  /// The number of columns for extra small screens.
   final int xs;
+  /// The number of columns for small screens.
   final int? sm;
+  /// The number of columns for medium screens.
   final int? md;
+  /// The number of columns for large screens.
   final int? lg;
+  /// The number of columns for extra large screens.
   final int? xl;
+  /// The children of the grid row.
   final List<Widget> children;
+  /// The spacing between columns.
   final double spacing;
+  /// The spacing between rows.
   final double runSpacing;
 
+  /// Creates a [GridRow].
   const GridRow({
     super.key,
     this.xs = 1,
@@ -158,15 +203,23 @@ class GridRow extends StatelessWidget {
 /// FlexCol(xs: 12, md: 6, child: Container())
 /// ```
 class FlexCol extends StatelessWidget {
+  /// The number of columns for extra small screens.
   final int xs;
+  /// The number of columns for small screens.
   final int? sm;
+  /// The number of columns for medium screens.
   final int? md;
+  /// The number of columns for large screens.
   final int? lg;
+  /// The number of columns for extra large screens.
   final int? xl;
+  /// The child of the flex column.
   final Widget child;
 
+  /// The total number of columns.
   static const int totalColumns = 12;
 
+  /// Creates a [FlexCol].
   const FlexCol({
     super.key,
     this.xs = 12,
@@ -201,12 +254,18 @@ class FlexCol extends StatelessWidget {
 /// FlexRow(children: [FlexCol(...), FlexCol(...)])
 /// ```
 class FlexRow extends StatelessWidget {
+  /// The children of the flex row.
   final List<Widget> children;
+  /// The spacing between columns.
   final double spacing;
+  /// The spacing between rows.
   final double runSpacing;
+  /// The cross axis alignment of the flex row.
   final CrossAxisAlignment crossAxisAlignment;
+  /// The main axis alignment of the flex row.
   final MainAxisAlignment mainAxisAlignment;
 
+  /// Creates a [FlexRow].
   const FlexRow({
     super.key,
     required this.children,
@@ -246,6 +305,7 @@ class FlexRow extends StatelessWidget {
 
 /// Extension to convert List<FlexCol> to FlexRow.
 extension KaeruFlexListColExt on List<FlexCol> {
+  /// Converts a list of [FlexCol] to a [FlexRow].
   FlexRow toFlex({
     Key? key,
     double spacing = 8,
@@ -264,6 +324,7 @@ extension KaeruFlexListColExt on List<FlexCol> {
 
 /// Extension to convert List<Widget> to FlexRow with columns.
 extension KaeruFlexListExt on List<Widget> {
+  /// Converts a list of widgets to a list of [FlexCol].
   List<FlexCol> toFlexCol({
     Key? key,
     int xs = 12,
@@ -276,6 +337,7 @@ extension KaeruFlexListExt on List<Widget> {
         FlexCol(key: key, xs: xs, sm: sm, md: md, lg: lg, xl: xl, child: child),
   ).toList();
 
+  /// Converts a list of widgets to a [FlexRow].
   FlexRow toFlex({
     int xs = 12,
     int? sm,

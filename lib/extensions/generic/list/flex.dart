@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 /// Builds Row/Column from List<Widget>.
 extension KaeruFlexExtension on List<Widget> {
   // ===== Row / HStack =====
+  /// Creates a [Row] with the given widgets.
   Widget hStack({
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
@@ -24,6 +25,7 @@ extension KaeruFlexExtension on List<Widget> {
     );
   }
 
+  /// Creates a [Row] with the given widgets.
   Widget row({
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
@@ -35,6 +37,7 @@ extension KaeruFlexExtension on List<Widget> {
   );
 
   // ===== Column / VStack =====
+  /// Creates a [Column] with the given widgets.
   Widget vStack({
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
@@ -48,6 +51,7 @@ extension KaeruFlexExtension on List<Widget> {
     );
   }
 
+  /// Creates a [Column] with the given widgets.
   Widget column({
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,

@@ -10,6 +10,7 @@ import 'package:kaeru_ui/virtual/v_text.dart';
 
 /// Bridges Text to VText for chainable styling.
 extension KaeruTextExtension on Text {
+  /// Converts a [Text] widget to a [VText] widget for chainable styling.
   VText get text => VText(
     data,
     style: style,

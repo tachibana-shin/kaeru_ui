@@ -49,7 +49,7 @@ extension KaeruColorOpacity on Color {
   /// ```dart
   /// Colors.blue.o(0.5);
   /// ```
-  Color o(double opacity) => withValues(alpha: opacity);
+  Color o(double opacity) => withOpacity(opacity);
 }
 
 /// Predefined color palette for Kaeru UI.

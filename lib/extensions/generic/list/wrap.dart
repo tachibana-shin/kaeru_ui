@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// Builds a Wrap widget from List<Widget>.
 extension KaeruWrapExtension on List<Widget> {
+  /// Creates a [Wrap] with the given widgets.
   Widget wrap({
     double spacing = 0,
     double runSpacing = 0,

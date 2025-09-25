@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// Wraps a widget in a badge-style container.
 extension KaeruBadgeWidget on Widget {
+  /// Wraps the widget in a badge-style container.
   Widget badge({
     Color bgColor = Colors.red,
     Color textColor = Colors.white,

@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 /// Builds Row/Column with gaps from List<Widget>.
 extension KaeruFlexGapExtension on List<Widget> {
   // ===== HStack with gap =====
+  /// Creates a [Row] with the given widgets and a [gap] between them.
   Widget hStackWithGap({
     double gap = 0,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
@@ -39,6 +40,7 @@ extension KaeruFlexGapExtension on List<Widget> {
   }
 
   // ===== VStack with gap =====
+  /// Creates a [Column] with the given widgets and a [gap] between them.
   Widget vStackWithGap({
     double gap = 0,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,

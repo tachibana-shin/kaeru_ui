@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 /// Extension chainable animation & shimmer
 extension KaeruAnimation on Widget {
   // Fade In
+  /// Fades in the widget.
   Widget fadeIn({
     Key? key,
     Duration duration = const Duration(milliseconds: 500),
@@ -26,6 +27,7 @@ extension KaeruAnimation on Widget {
   }
 
   // Slide Up
+  /// Slides up the widget.
   Widget slideUp({
     Key? key,
     Duration duration = const Duration(milliseconds: 500),
@@ -43,6 +45,7 @@ extension KaeruAnimation on Widget {
   }
 
   // Scale animation
+  /// Scales the widget.
   Widget scale({
     Key? key,
     Duration duration = const Duration(milliseconds: 500),
@@ -62,6 +65,7 @@ extension KaeruAnimation on Widget {
   }
 
   // Rotate animation
+  /// Rotates the widget.
   Widget rotate({
     Key? key,
     Duration duration = const Duration(milliseconds: 500),
