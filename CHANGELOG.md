@@ -1,3 +1,6 @@
+## 0.0.14
+* update document
+
 ## 0.0.13
 * Add align method to KaeruFlexWidgetExtension
 
