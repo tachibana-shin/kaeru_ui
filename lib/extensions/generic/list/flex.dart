@@ -5,6 +5,7 @@
 /// [Text('A'), Text('B'), Text('C')].hStack(mainAxisAlignment: MainAxisAlignment.spaceBetween);
 /// [Text('A'), Text('B'), Text('C')].vStack();
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

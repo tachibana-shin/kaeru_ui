@@ -11,6 +11,7 @@
 /// ```
 ///
 /// See README.md for full documentation.
+library;
 
 export 'extensions/generic/list/flex.dart';
 export 'extensions/generic/list/flex_gap.dart';

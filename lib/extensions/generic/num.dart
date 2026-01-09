@@ -9,6 +9,7 @@
 /// 5.seconds            // Duration(seconds: 5)
 /// 3.14159.toFixed(2)   // "3.14"
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

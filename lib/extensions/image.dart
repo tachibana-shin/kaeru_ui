@@ -4,6 +4,7 @@
 /// ```dart
 /// Image.network(url).size(width: 100, height: 60).fitBox(BoxFit.cover);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

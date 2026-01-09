@@ -4,6 +4,7 @@
 /// ```dart
 /// [Text('A'), Text('B'), Text('C')].wrap(spacing: 4, runSpacing: 8);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

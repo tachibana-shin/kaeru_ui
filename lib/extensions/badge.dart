@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('5').badge(bgColor: Colors.green, fontSize: 14);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

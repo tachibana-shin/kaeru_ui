@@ -5,6 +5,7 @@
 /// Image.network(url).circle;
 /// Container().rounded(12);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

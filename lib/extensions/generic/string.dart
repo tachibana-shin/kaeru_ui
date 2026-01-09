@@ -9,6 +9,7 @@
 /// 'user@example.com'.isEmail; // true
 /// 'Hello'.text.lg.red(600).make();
 /// ```
+library;
 
 import 'package:kaeru_ui/virtual/v_text.dart';
 

@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('Tap me').onTap(() => print('Tapped'));
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

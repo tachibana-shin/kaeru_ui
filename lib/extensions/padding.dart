@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('Hello').p(12).px(8);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/generic/edge_insets.dart';

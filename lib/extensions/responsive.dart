@@ -6,6 +6,7 @@
 /// Text('Mobile view').xsOnly(context);
 /// GridRow(xs: 2, md: 4, children: [...]);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/clip.dart';

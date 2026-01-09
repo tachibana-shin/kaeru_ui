@@ -4,6 +4,7 @@
 /// ```dart
 /// Icon(Icons.arrow_upward).rotate(pi / 4).translate(dx: 10);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

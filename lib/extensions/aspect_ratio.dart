@@ -4,6 +4,7 @@
 /// ```dart
 /// Container().aspectRatio(16/9);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

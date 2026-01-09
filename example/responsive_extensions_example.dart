@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kaeru_ui/kaeru_ui.dart';
 
 class ResponsiveExtensionsExample extends StatelessWidget {
+  const ResponsiveExtensionsExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

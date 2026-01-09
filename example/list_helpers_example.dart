@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kaeru_ui/kaeru_ui.dart';
 
 class ListHelpersExample extends StatelessWidget {
+  const ListHelpersExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

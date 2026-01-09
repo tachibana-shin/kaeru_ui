@@ -4,6 +4,7 @@
 /// ```dart
 /// Container().positioned(top: 0, left: 0);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

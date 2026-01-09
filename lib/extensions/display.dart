@@ -4,6 +4,7 @@
 /// ```dart
 /// widget.show(isVisible);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

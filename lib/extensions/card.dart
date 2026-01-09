@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('Card').card(color: Colors.blue, elevation: 4);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

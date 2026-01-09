@@ -5,6 +5,7 @@
 /// 5.0.hSpace;
 /// 10.0.vSpace;
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

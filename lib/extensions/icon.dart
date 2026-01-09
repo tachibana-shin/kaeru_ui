@@ -4,6 +4,7 @@
 /// ```dart
 /// Icon(Icons.add).size(30).iconColor(Colors.green);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

@@ -5,6 +5,7 @@
 /// [Text('1'), Text('2'), Text('3')].hStackWithGap(gap: 8);
 /// [Text('A'), Text('B'), Text('C')].vStackWithGap(gap: 12);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('Hi').m(8).make();
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 import 'package:kaeru_ui/extensions/box.dart';

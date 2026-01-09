@@ -4,6 +4,7 @@
 /// ```dart
 /// 'https://example.com/a.png'.avatar(radius: 24, backgroundColor: Colors.blueGrey);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

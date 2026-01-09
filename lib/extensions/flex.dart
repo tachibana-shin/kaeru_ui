@@ -4,6 +4,7 @@
 /// ```dart
 /// Icon(Icons.home).centered.expand(flex: 2);
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

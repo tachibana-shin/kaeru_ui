@@ -4,6 +4,7 @@
 /// ```dart
 /// [Container(color: Colors.red), Text("On top")].stack(alignment: Alignment.center)
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

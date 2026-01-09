@@ -4,6 +4,7 @@
 /// ```dart
 /// const EdgeInsets.all(8).merge(const EdgeInsets.symmetric(horizontal: 4));
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

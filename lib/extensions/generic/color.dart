@@ -6,6 +6,7 @@
 /// ```dart
 /// Colors.blue.sa(200).o(0.5).secondary;
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

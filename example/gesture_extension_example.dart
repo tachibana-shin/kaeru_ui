@@ -6,7 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class GestureExample extends StatelessWidget {
+  const GestureExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

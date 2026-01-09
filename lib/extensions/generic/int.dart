@@ -4,6 +4,7 @@
 /// ```dart
 /// 0xFF112233.color   // Color(0xFF112233)
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

@@ -6,7 +6,7 @@ void main() {
 }
 
 class ClipExtensionExample extends StatelessWidget {
-  const ClipExtensionExample({Key? key}) : super(key: key);
+  const ClipExtensionExample({super.key});
 
   @override
   Widget build(BuildContext context) {

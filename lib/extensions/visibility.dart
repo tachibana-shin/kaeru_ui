@@ -5,6 +5,7 @@
 /// widget.visible(isActive, replacement: Text('Off'));
 /// widget.hide;
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

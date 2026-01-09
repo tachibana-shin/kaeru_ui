@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('A').box.bg(Colors.red).rounded(4).make();
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 

@@ -4,6 +4,7 @@
 /// ```dart
 /// Text('Click').inkWell(onTap: () => print('InkWell tapped'));
 /// ```
+library;
 
 import 'package:flutter/material.dart';
 
