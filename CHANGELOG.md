@@ -1,3 +1,6 @@
+## 0.0.15
+* add `.disabled()`
+
 ## 0.0.14
 * update document
 
