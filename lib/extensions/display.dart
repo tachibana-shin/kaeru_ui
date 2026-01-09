@@ -16,4 +16,14 @@ extension KaeruDisplayExtension on Widget {
 
   /// Always remove (no space).
   Widget get none => const SizedBox.shrink();
+
+  /// Disable this widget visually + interaction
+  Widget disabled(bool isDisabled, {double opacity = 0.5}) {
+    if (!isDisabled) return this;
+
+    return IgnorePointer(
+      ignoring: true,
+      child: Opacity(opacity: opacity, child: this),
+    );
+  }
 }
