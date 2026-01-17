@@ -27,4 +27,8 @@ extension KaeruDisplayExtension on Widget {
       child: Opacity(opacity: opacity, child: this),
     );
   }
+
+  Widget? nullIf(bool state) {
+    return state ? this : null;
+  }
 }
