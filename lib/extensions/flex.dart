@@ -6,6 +6,7 @@
 /// ```
 library;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 /// Alignment, scrolling, and flex wrappers on any widget.
@@ -13,15 +14,20 @@ extension KaeruFlexWidgetExtension on Widget {
   // ===== Alignment shorthand =====
   /// Aligns the widget to the center.
   Widget get centered => Align(alignment: Alignment.center, child: this);
+
   /// Aligns the widget to the top left.
   Widget get topLeft => Align(alignment: Alignment.topLeft, child: this);
+
   /// Aligns the widget to the top right.
   Widget get topRight => Align(alignment: Alignment.topRight, child: this);
+
   /// Aligns the widget to the bottom left.
   Widget get bottomLeft => Align(alignment: Alignment.bottomLeft, child: this);
+
   /// Aligns the widget to the bottom right.
   Widget get bottomRight =>
       Align(alignment: Alignment.bottomRight, child: this);
+
   /// Wraps the widget in an [Align] widget with the specified [alignment].
   Align align(
     Alignment alignment, {
@@ -40,14 +46,34 @@ extension KaeruFlexWidgetExtension on Widget {
   /// Wraps the widget in a [SingleChildScrollView].
   Widget scrollable({
     Axis axis = Axis.vertical,
+    bool enabled = true,
     bool reverse = false,
     ScrollPhysics? physics,
-  }) => SingleChildScrollView(
-    scrollDirection: axis,
-    reverse: reverse,
-    physics: physics,
-    child: this,
-  );
+    EdgeInsetsGeometry? padding,
+    bool? primary,
+    ScrollController? controller,
+    Widget? child,
+    DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+    Clip clipBehavior = Clip.hardEdge,
+    HitTestBehavior hitTestBehavior = HitTestBehavior.opaque,
+    String? restorationId,
+    ScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+  }) => enabled
+      ? SingleChildScrollView(
+          scrollDirection: axis,
+          reverse: reverse,
+          physics: physics,
+          padding: padding,
+          primary: primary,
+          controller: controller,
+          dragStartBehavior: dragStartBehavior,
+          clipBehavior: clipBehavior,
+          hitTestBehavior: hitTestBehavior,
+          restorationId: restorationId,
+          keyboardDismissBehavior: keyboardDismissBehavior,
+          child: this,
+        )
+      : this;
 
   // ===== Expanded =====
   /// Wraps the widget in an [Expanded] widget.
