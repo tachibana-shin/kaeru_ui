@@ -1,3 +1,6 @@
+## 0.0.17
+* add ext for `VText`
+
 ## 0.0.16
 * add feature
 
