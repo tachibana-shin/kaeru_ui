@@ -364,69 +364,70 @@ class VText {
     selectionColor: selectionColor,
   );
 }
-
-/// material you 2021
+/// material you 2021 (CSS-style line-height)
 extension VTextExt on VText {
+  // Display
   VText get displayLarge {
-    return size(57.0).lineHeight(64.0).normal.spacing(-0.25);
+    return size(57.0).lineHeight(64 / 57).normal.spacing(-0.25);
   }
 
   VText get displayMedium {
-    return size(45.0).lineHeight(52.0).normal.spacing(0.0);
+    return size(45.0).lineHeight(52 / 45).normal.spacing(0.0);
   }
 
   VText get displaySmall {
-    return size(36.0).lineHeight(44.0).normal.spacing(0.0);
+    return size(36.0).lineHeight(44 / 36).normal.spacing(0.0);
   }
 
   // Headline
   VText get headlineLarge {
-    return size(32.0).lineHeight(40.0).normal.spacing(0.0);
+    return size(32.0).lineHeight(40 / 32).normal.spacing(0.0);
   }
 
   VText get headlineMedium {
-    return size(28.0).lineHeight(36.0).normal.spacing(0.0);
+    return size(28.0).lineHeight(36 / 28).normal.spacing(0.0);
   }
 
   VText get headlineSmall {
-    return size(24.0).lineHeight(32.0).normal.spacing(0.0);
+    return size(24.0).lineHeight(32 / 24).normal.spacing(0.0);
   }
 
+  // Title
   VText get titleLarge {
-    return size(22.0).lineHeight(28.0).normal.spacing(0.0);
+    return size(22.0).lineHeight(28 / 22).normal.spacing(0.0);
   }
 
   VText get titleMedium {
-    return size(16.0).lineHeight(24.0).medium.spacing(0.15);
+    return size(16.0).lineHeight(24 / 16).medium.spacing(0.15);
   }
 
   VText get titleSmall {
-    return size(14.0).lineHeight(20.0).medium.spacing(0.1);
+    return size(14.0).lineHeight(20 / 14).medium.spacing(0.1);
   }
 
   // Body
   VText get bodyLarge {
-    return size(16.0).lineHeight(24.0).normal.spacing(0.5);
+    return size(16.0).lineHeight(24 / 16).normal.spacing(0.5);
   }
 
   VText get bodyMedium {
-    return size(14.0).lineHeight(20.0).normal.spacing(0.25);
+    return size(14.0).lineHeight(20 / 14).normal.spacing(0.25);
   }
 
   VText get bodySmall {
-    return size(12.0).lineHeight(16.0).normal.spacing(0.4);
+    return size(12.0).lineHeight(16 / 12).normal.spacing(0.4);
   }
 
   // Label
   VText get labelLarge {
-    return size(14.0).lineHeight(20.0).medium.spacing(0.1);
+    return size(14.0).lineHeight(20 / 14).medium.spacing(0.1);
   }
 
   VText get labelMedium {
-    return size(12.0).lineHeight(16.0).medium.spacing(0.5);
+    return size(12.0).lineHeight(16 / 12).medium.spacing(0.5);
   }
 
   VText get labelSmall {
-    return size(11.0).lineHeight(16.0).medium.spacing(0.5);
+    return size(11.0).lineHeight(16 / 11).medium.spacing(0.5);
   }
 }

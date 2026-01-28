@@ -1,3 +1,6 @@
+## 0.0.18
+* fix line height vtext
+
 ## 0.0.17
 * add ext for `VText`
 
