@@ -14,20 +14,28 @@ class VText {
 
   /// The strut style.
   final StrutStyle? strutStyle;
+
   /// The text direction.
   final TextDirection? textDirection;
+
   /// The locale.
   final Locale? locale;
+
   /// Whether the text should wrap.
   final bool? softWrap;
+
   /// The semantics label.
   final String? semanticsLabel;
+
   /// The semantics identifier.
   final String? semanticsIdentifier;
+
   /// The text width basis.
   final TextWidthBasis? textWidthBasis;
+
   /// The text height behavior.
   final TextHeightBehavior? textHeightBehavior;
+
   /// The selection color.
   final Color? selectionColor;
 
@@ -355,4 +363,70 @@ class VText {
     textHeightBehavior: textHeightBehavior,
     selectionColor: selectionColor,
   );
+}
+
+/// material you 2021
+extension VTextExt on VText {
+  VText get displayLarge {
+    return size(57.0).lineHeight(64.0).normal.spacing(-0.25);
+  }
+
+  VText get displayMedium {
+    return size(45.0).lineHeight(52.0).normal.spacing(0.0);
+  }
+
+  VText get displaySmall {
+    return size(36.0).lineHeight(44.0).normal.spacing(0.0);
+  }
+
+  // Headline
+  VText get headlineLarge {
+    return size(32.0).lineHeight(40.0).normal.spacing(0.0);
+  }
+
+  VText get headlineMedium {
+    return size(28.0).lineHeight(36.0).normal.spacing(0.0);
+  }
+
+  VText get headlineSmall {
+    return size(24.0).lineHeight(32.0).normal.spacing(0.0);
+  }
+
+  VText get titleLarge {
+    return size(22.0).lineHeight(28.0).normal.spacing(0.0);
+  }
+
+  VText get titleMedium {
+    return size(16.0).lineHeight(24.0).medium.spacing(0.15);
+  }
+
+  VText get titleSmall {
+    return size(14.0).lineHeight(20.0).medium.spacing(0.1);
+  }
+
+  // Body
+  VText get bodyLarge {
+    return size(16.0).lineHeight(24.0).normal.spacing(0.5);
+  }
+
+  VText get bodyMedium {
+    return size(14.0).lineHeight(20.0).normal.spacing(0.25);
+  }
+
+  VText get bodySmall {
+    return size(12.0).lineHeight(16.0).normal.spacing(0.4);
+  }
+
+  // Label
+  VText get labelLarge {
+    return size(14.0).lineHeight(20.0).medium.spacing(0.1);
+  }
+
+  VText get labelMedium {
+    return size(12.0).lineHeight(16.0).medium.spacing(0.5);
+  }
+
+  VText get labelSmall {
+    return size(11.0).lineHeight(16.0).medium.spacing(0.5);
+  }
 }
